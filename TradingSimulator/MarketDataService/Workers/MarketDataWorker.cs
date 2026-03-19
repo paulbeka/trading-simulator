@@ -9,12 +9,12 @@ namespace MarketDataService.Workers
     {
         private readonly int DELAY = 1000;
 
-        private readonly YahooFinanceProvider _provider;
+        private readonly FinnhubProvider _provider;
         private readonly KafkaProducer _producer;
 
         public MarketDataWorker()
         {
-            _provider = new YahooFinanceProvider();
+            _provider = new FinnhubProvider();
             _producer = new KafkaProducer();
         }
 
