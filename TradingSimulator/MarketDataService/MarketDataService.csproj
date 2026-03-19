@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-MarketDataService-8232e584-8205-488a-8cdf-6f8917e5109c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="2.13.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.3" />
+  </ItemGroup>
+</Project>
