@@ -1,6 +1,7 @@
 ﻿namespace PnlEngine.Stores
 {
-    internal class ReverseIndex
+    internal class UserToTickerIndex
     {
+
     }
 }

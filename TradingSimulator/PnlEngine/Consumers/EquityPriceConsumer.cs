@@ -29,7 +29,7 @@ namespace PnlEngine.Consumers
 
                     Console.WriteLine($"Recieved: {result.Message.Value}");
 
-                    //
+                    // send to reverse proxy and calculate PnL?
                 }
             }
             catch (Exception ex)

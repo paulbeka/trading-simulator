@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PnlEngine.Stores
 {
-    internal class PositionIndex
+    internal class PnlStore
     {
     }
 }
