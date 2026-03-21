@@ -1,21 +1,25 @@
-﻿namespace PnlEngine.Workers
+﻿using PnlEngine.Consumers;
+using PnlEngine.Services;
+
+namespace PnlEngine.Workers
 {
     internal class PnlWorker : BackgroundService
     {
-        private readonly PriceConsumer _priceConsumer;
-        private readonly PositionConsumer _positionConsumer;
+        private readonly EquityPriceConsumer _priceConsumer;
 
-        public PnLWorker(
-            PriceConsumer priceConsumer,
-            PositionConsumer positionConsumer)
+        public PnlWorker(EquityPriceConsumer priceConsumer)
         {
             _priceConsumer = priceConsumer;
-            _positionConsumer = positionConsumer;
         }
 
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
-            var priceTask = _priceConsumer.ConsumeEquityPrices(stoppingToken);
+            await _initialisationService.LoadPositions();
+            await _initialisationService.LoadPrices();
+
+            _pnlService.InitialiseUserPnL(_initialisationService.GetAllUsers());
+
+            var priceTask = _priceConsumer.ConsumeEquityPricesAsync(cancellationToken);
 
             await Task.WhenAll(priceTask);
         }

@@ -22,3 +22,18 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
 
       CLUSTER_ID: "MkU3OEVBNTcwNTJENDM2Qk"
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: trading_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

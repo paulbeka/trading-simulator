@@ -29,4 +29,6 @@ Ok so here's the plan:
 Later:
  - Make sure new orders have their own queue, and execute at a certain price and get persisted to both memory and the positions database (which should include when the stock was bought)
  - include valuations for options of different types
- 
+
+
+ Make sure to calculate unrealised PnL + realised PnL

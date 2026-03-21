@@ -3,6 +3,7 @@ using PnlEngine.Workers;
 
 var builder = Host.CreateApplicationBuilder(args);
 
+builder.Services.AddSingleton<PnlStore>();
 builder.Services.AddSingleton<PriceCache>();
 builder.Services.AddSingleton<UserToTickerIndex>();
 builder.Services.AddSingleton<TickerToUserIndex>();

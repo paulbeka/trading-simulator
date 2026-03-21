@@ -1,7 +1,52 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Workspace\\trading-simulator\\TradingSimulator\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\services\\pnlservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\services\\pnlservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\producer\\pnlupdatekafkaproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\producer\\pnlupdatekafkaproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\models\\pnlupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\models\\pnlupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\marketdataservice\\kafkaproducers\\kafkaproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|solutionrelative:marketdataservice\\kafkaproducers\\kafkaproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\stores\\userpositions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\stores\\userpositions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\models\\position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\models\\position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\consumers\\equitypriceconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\consumers\\equitypriceconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\stores\\tickertouserindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\stores\\tickertouserindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\stores\\usertotickerindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\stores\\usertotickerindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\workers\\pnlworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\workers\\pnlworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +54,152 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PnlService.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Services\\PnlService.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Services\\PnlService.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Services\\PnlService.cs",
+              "RelativeToolTip": "PnlEngine\\Services\\PnlService.cs",
+              "ViewState": "AgIAAAIAAABUAAAAAAAYwD0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T17:22:18.545Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PnLUpdate.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Models\\PnLUpdate.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Models\\PnLUpdate.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Models\\PnLUpdate.cs",
+              "RelativeToolTip": "PnlEngine\\Models\\PnLUpdate.cs",
+              "ViewState": "AgIAAAAAAABgmZmZmZkuwAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T21:37:37.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PnlUpdateKafkaProducer.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Producer\\PnlUpdateKafkaProducer.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Producer\\PnlUpdateKafkaProducer.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Producer\\PnlUpdateKafkaProducer.cs",
+              "RelativeToolTip": "PnlEngine\\Producer\\PnlUpdateKafkaProducer.cs",
+              "ViewState": "AgIAAAsAAACAzszMzMwrwCMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T20:23:17.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Position.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Models\\Position.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Models\\Position.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Models\\Position.cs",
+              "RelativeToolTip": "PnlEngine\\Models\\Position.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T19:56:10.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserPositions.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Stores\\UserPositions.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Stores\\UserPositions.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Stores\\UserPositions.cs",
+              "RelativeToolTip": "PnlEngine\\Stores\\UserPositions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T19:18:30.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EquityPriceConsumer.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Consumers\\EquityPriceConsumer.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Consumers\\EquityPriceConsumer.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Consumers\\EquityPriceConsumer.cs",
+              "RelativeToolTip": "PnlEngine\\Consumers\\EquityPriceConsumer.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAAADYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T19:00:33.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TickerToUserIndex.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Stores\\TickerToUserIndex.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Stores\\TickerToUserIndex.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Stores\\TickerToUserIndex.cs",
+              "RelativeToolTip": "PnlEngine\\Stores\\TickerToUserIndex.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAiwBsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T20:49:58.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserToTickerIndex.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Stores\\UserToTickerIndex.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Stores\\UserToTickerIndex.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Stores\\UserToTickerIndex.cs",
+              "RelativeToolTip": "PnlEngine\\Stores\\UserToTickerIndex.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T17:15:38.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Program.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Program.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Program.cs",
+              "RelativeToolTip": "PnlEngine\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T17:14:44.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PnlWorker.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Workers\\PnlWorker.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Workers\\PnlWorker.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Workers\\PnlWorker.cs",
+              "RelativeToolTip": "PnlEngine\\Workers\\PnlWorker.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBUAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T16:58:26.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "KafkaProducer.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\KafkaProducers\\KafkaProducer.cs",
+              "RelativeDocumentMoniker": "MarketDataService\\KafkaProducers\\KafkaProducer.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\KafkaProducers\\KafkaProducer.cs",
+              "RelativeToolTip": "MarketDataService\\KafkaProducers\\KafkaProducer.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAkwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T16:52:12.498Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -30,10 +219,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             }
           ]
         }

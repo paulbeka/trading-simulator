@@ -1,1 +1,4 @@
-<Solution />
+<Solution>
+  <Project Path="MarketDataService/MarketDataService.csproj" />
+  <Project Path="PnlEngine/PnlEngine.csproj" />
+</Solution>

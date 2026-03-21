@@ -1,14 +1,21 @@
 ﻿using Confluent.Kafka;
+using PnlEngine.Models;
+using PnlEngine.Services;
+using System.Text.Json;
 
 namespace PnlEngine.Consumers
 {
     internal class EquityPriceConsumer
     {
         private readonly IConsumer<Ignore, string> _consumer;
+        private readonly PnlService _pnlService;
+
         private readonly string EQUITY_TOPIC = "";
 
-        public EquityPriceConsumer() 
+        public EquityPriceConsumer(PnlService pnlService)
         {
+            _pnlService = pnlService;
+
             var config = new ConsumerConfig
             {
                 GroupId = "equity-price-consumer-group",
@@ -25,9 +32,7 @@ namespace PnlEngine.Consumers
             {
                 while (!stoppingToken.IsCancellationRequested)
                 {
-                    var result = _consumer.Consume();
-
-                    Console.WriteLine($"Recieved: {result.Message.Value}");
+                    HandlePriceUpdate(_consumer.Consume());
 
                     // send to reverse proxy and calculate PnL?
                 }
@@ -36,6 +41,18 @@ namespace PnlEngine.Consumers
             {
                 Console.WriteLine(ex.ToString());
                 _consumer.Close();
+            }
+        }
+
+        private void HandlePriceUpdate(ConsumeResult<Ignore, string> message)
+        {
+            Console.WriteLine($"Recieved: {message.Message.Value}");
+
+            var priceUpdate = JsonSerializer.Deserialize<PriceUpdate>(message.Message.Value);
+
+            if (priceUpdate != null)
+            {
+                _pnlService.HandlePriceUpdate(priceUpdate.Ticker, priceUpdate.Price);
             }
         }
     } 

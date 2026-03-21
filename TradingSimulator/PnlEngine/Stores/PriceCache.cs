@@ -6,9 +6,32 @@ namespace PnlEngine.Stores
     {
         private readonly ConcurrentDictionary<string, decimal> _prices = new();
 
-        public void Update(string ticker, decimal price)
+        public (bool changed, decimal? oldPrice) UpdateIfChanged(string symbol, decimal newPrice)
         {
-            _prices[ticker] = price;
+            decimal? oldPrice = null;
+            bool changed = false;
+
+            _prices.AddOrUpdate(
+                symbol,
+                _ =>
+                {
+                    changed = true;
+                    return newPrice;
+                },
+                (_, existing) =>
+                {
+                    oldPrice = existing;
+
+                    if (existing != newPrice)
+                    {
+                        changed = true;
+                        return newPrice;
+                    }
+
+                    return existing;
+                });
+
+            return (changed, oldPrice);
         }
 
         public decimal? GetPrice(string ticker)
