@@ -20,7 +20,7 @@ namespace MarketDataService.Workers
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            // TODO: fetch the tickers from the database
+            // TODO: fetch the tickers from live price cache
             var tickers = new[] { "AAPL", "GOOGL" };
             while (!stoppingToken.IsCancellationRequested)
             {
@@ -36,7 +36,7 @@ namespace MarketDataService.Workers
 
                     var json = JsonSerializer.Serialize(message);
 
-                    await _producer.PublishAsync("marketdata.equities", json);
+                    await _producer.PublishAsync("marketdata.equities", ticker, json);
 
                     Console.WriteLine($"Published: {ticker} {price}");
                 }

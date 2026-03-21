@@ -32,3 +32,4 @@ Later:
 
 
  Make sure to calculate unrealised PnL + realised PnL
+ Ensure proper kafka singleton injection configuration with constants dealt with
