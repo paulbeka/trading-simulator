@@ -1,4 +1,6 @@
 <Solution>
+  <Project Path="Database/Database.csproj" />
   <Project Path="MarketDataService/MarketDataService.csproj" />
   <Project Path="PnlEngine/PnlEngine.csproj" />
+  <Project Path="TradingApi/TradingApi.csproj" />
 </Solution>

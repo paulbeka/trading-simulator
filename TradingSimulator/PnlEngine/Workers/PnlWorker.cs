@@ -14,10 +14,10 @@ namespace PnlEngine.Workers
 
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
-            await _initialisationService.LoadPositions();
-            await _initialisationService.LoadPrices();
+            //await _initialisationService.LoadPositions();
+            //await _initialisationService.LoadPrices();
 
-            _pnlService.InitialiseUserPnL(_initialisationService.GetAllUsers());
+            //_pnlService.InitialiseUserPnL(_initialisationService.GetAllUsers());
 
             var priceTask = _priceConsumer.ConsumeEquityPricesAsync(cancellationToken);
 

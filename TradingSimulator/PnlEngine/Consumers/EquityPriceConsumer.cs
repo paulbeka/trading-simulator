@@ -33,8 +33,6 @@ namespace PnlEngine.Consumers
                 while (!stoppingToken.IsCancellationRequested)
                 {
                     HandlePriceUpdate(_consumer.Consume());
-
-                    // send to reverse proxy and calculate PnL?
                 }
             }
             catch (Exception ex)
