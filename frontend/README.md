@@ -1,35 +1,73 @@
+# React + TypeScript + Vite
 
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-# The Plan
+Currently, two official plugins are available:
 
-We can't fully simulate getting live prices, so we'll fetch from Yahoo Finance the positions that we currently own for equities. 
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-Workflow:
-- User choses to buy/sell assets on a dashboard. They can look them up with a searchbar.
-- If they place an order, it's stored somewhere and bought at the price the order is executed.
-- That goes into a positions database
-- On the dashboard, the user can see their live P&L from different assets. 
+## React Compiler
 
-Options:
-- the user can buy options, which also has a P&L component. 
-- The option is priced using black scholes etc (+ maybe using some other methods such as vol smiles to properly model the real prices)
-- The option can then be re-sold or executed as necessary
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
+## Expanding the ESLint configuration
 
-Ok so here's the plan:
- - I now have updates on stock prices published to Kafka
- - Create a PnL consumer
- - At init, create two maps, user->positions and tickers-> user. Populate the initial prices
- - Update prices in memory as new prices come in [long term goal use sharding]
- - For each stock update, update user PnL [could this be partitioned into kafka?]
- - With new user PnL, use kafka to publish to the .NET api section can send a webhook push
- - the webhook push should send an initial format, then only send updates 
- - the updates should include new stock prices which pertain to the user (and include PnL)
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-Later:
- - Make sure new orders have their own queue, and execute at a certain price and get persisted to both memory and the positions database (which should include when the stock was bought)
- - include valuations for options of different types
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
- Make sure to calculate unrealised PnL + realised PnL
- Ensure proper kafka singleton injection configuration with constants dealt with
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
