@@ -1,12 +1,17 @@
 # What is this project?
 
+The idea is to build a live PnL calculator for users with different positions in equity and derivatives. This should be updated live, and systems should be updated using Kafka to reduce dependency between systems whilst maintaining high performance. Price updates should reverberate throughout the system, updating in-cache PnL, user position values, populate a websocket, and persist realised PnL.
+
+I want to demonstrate my skillset when it comes to live PnL maintainence systems and valuations know-how.
 
 # Backend
+
+The backend is built entirely in C#, and the event pipeline is maintained via Kafka.
 
 
 # Frontend
 
-Uses Vite, React, and TypeScript
+Uses Vite, React, and TypeScript.
 
 
 # The Plan
