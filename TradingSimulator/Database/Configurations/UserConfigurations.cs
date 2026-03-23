@@ -23,10 +23,6 @@ namespace Database.Configurations
                 .IsRequired()
                 .HasMaxLength(500);
 
-            builder.Property(x => x.CreatedAt)
-                .HasColumnType("timestamp with time zone")
-                .HasDefaultValueSql("NOW()");
-
             builder.HasIndex(x => x.Email)
                 .IsUnique();
 

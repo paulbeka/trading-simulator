@@ -8,32 +8,39 @@ import {
   CircularProgress,
   Paper,
 } from "@mui/material";
-import { login } from "../api/authApi";
+import { register } from "../api/authApi";
 import { useAuthStore } from "../auth/authStore";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const setAuth = useAuthStore((s) => s.setAuth);
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const navigate = useNavigate();
-
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setError("");
 
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      const data = await login(email, password);
-      setAuth(data.user, data.token);
+      const data = await register(email, password);
+      setAuth(data.user, data.access_token);
 
       navigate("/dashboard");
     } catch {
-      setError("Invalid email or password");
+      setError("Failed to register. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -47,12 +54,10 @@ const LoginPage = () => {
       minHeight="100vh"
     >
       <Paper elevation={3} sx={{ p: 4, width: 400 }}>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleRegister}>
           <Typography variant="h5" mb={2}>
-            Login
+            Register
           </Typography>
-
-          <Typography>No account? Sign up here.</Typography>
 
           <TextField
             label="Email"
@@ -60,7 +65,10 @@ const LoginPage = () => {
             fullWidth
             margin="normal"
             value={email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
+            required
           />
 
           <TextField
@@ -69,7 +77,22 @@ const LoginPage = () => {
             fullWidth
             margin="normal"
             value={password}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
+            required
+          />
+
+          <TextField
+            label="Confirm Password"
+            type="password"
+            fullWidth
+            margin="normal"
+            value={confirmPassword}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setConfirmPassword(e.target.value)
+            }
+            required
           />
 
           {error && (
@@ -85,7 +108,7 @@ const LoginPage = () => {
             sx={{ mt: 3 }}
             disabled={loading}
           >
-            {loading ? <CircularProgress size={24} /> : "Login"}
+            {loading ? <CircularProgress size={24} /> : "Register"}
           </Button>
         </form>
       </Paper>
@@ -93,4 +116,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

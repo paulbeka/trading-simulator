@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Workspace\\trading-simulator\\TradingSimulator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\services\\interfaces\\currentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\services\\interfaces\\currentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5D2C7CAA-D63E-7440-65F5-3727EF6D6D5B}|Database\\Database.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\database\\dbcontext\\tradingdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D2C7CAA-D63E-7440-65F5-3727EF6D6D5B}|Database\\Database.csproj|solutionrelative:database\\dbcontext\\tradingdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\tradingapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\tradingapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\services\\interfaces\\icurrentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\services\\interfaces\\icurrentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "TradingApi\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "TradingApi\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAA3wDQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T17:32:37.095Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CurrentUserService.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\Interfaces\\CurrentUserService.cs",
-              "RelativeDocumentMoniker": "TradingApi\\Services\\Interfaces\\CurrentUserService.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\Interfaces\\CurrentUserService.cs",
-              "RelativeToolTip": "TradingApi\\Services\\Interfaces\\CurrentUserService.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwBsAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T17:31:59.273Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\appsettings.json",
+              "RelativeDocumentMoniker": "TradingApi\\appsettings.json",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\appsettings.json",
+              "RelativeToolTip": "TradingApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-23T12:43:36.825Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "TradingApi\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\AuthService.cs",
-              "RelativeToolTip": "TradingApi\\Services\\AuthService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAkwFUAAAAJAAAAAAAAAA==",
+              "Title": "TradingDbContextFactory.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\Database\\DbContext\\TradingDbContextFactory.cs",
+              "RelativeDocumentMoniker": "Database\\DbContext\\TradingDbContextFactory.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\Database\\DbContext\\TradingDbContextFactory.cs",
+              "RelativeToolTip": "Database\\DbContext\\TradingDbContextFactory.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAswAoAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T17:29:32.809Z",
+              "WhenOpened": "2026-03-23T12:42:49.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Program.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Program.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Program.cs",
+              "RelativeToolTip": "TradingApi\\Program.cs",
+              "ViewState": "AgIAADcAAABQMzMzMzMrwBgAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T12:36:01.726Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "JwtTokenService.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\JwtTokenService.cs",
-              "RelativeDocumentMoniker": "TradingApi\\Services\\JwtTokenService.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\JwtTokenService.cs",
-              "RelativeToolTip": "TradingApi\\Services\\JwtTokenService.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAYwC8AAAABAAAAAAAAAA==",
+              "Title": "TradingApi",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\TradingApi.csproj",
+              "RelativeDocumentMoniker": "TradingApi\\TradingApi.csproj",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\TradingApi.csproj",
+              "RelativeToolTip": "TradingApi\\TradingApi.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-23T12:35:04.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ICurrentUserService.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\Interfaces\\ICurrentUserService.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Services\\Interfaces\\ICurrentUserService.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\Interfaces\\ICurrentUserService.cs",
+              "RelativeToolTip": "TradingApi\\Services\\Interfaces\\ICurrentUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T17:29:13.49Z",
+              "WhenOpened": "2026-03-22T17:42:22.175Z",
               "EditorCaption": ""
             },
             {

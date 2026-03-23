@@ -8,9 +8,7 @@ namespace Database.DbContext
         public TradingDbContext CreateDbContext(string[] args)
         {
             // TODO: maybe don't have the really unsafe fallback.
-            var connectionString =
-                Environment.GetEnvironmentVariable("TRADING_DB_CONNECTION_STRING")
-                ?? "Host=localhost;Port=5432;Database=trading_db;Username=admin;Password=admin";
+            var connectionString = "Host=127.0.0.1;Port=5433;Database=trading_db;Username=admin;Password=admin";
 
             var optionsBuilder = new DbContextOptionsBuilder<TradingDbContext>();
             optionsBuilder.UseNpgsql(connectionString);

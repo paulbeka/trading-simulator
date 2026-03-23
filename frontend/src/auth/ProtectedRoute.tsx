@@ -1,10 +1,26 @@
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "./authStore";
+import { useEffect, useState } from "react";
 
 const ProtectedRoute = ({ children }: any) => {
-  const user = useAuthStore((s) => s.user);
+  const token = useAuthStore((s) => s.token);
+  const [hydrated, setHydrated] = useState(false);
 
-  if (!user) return <Navigate to="/login" />;
+  useEffect(() => {
+    const unsub = useAuthStore.persist.onFinishHydration(() => {
+      setHydrated(true);
+    });
+
+    if (useAuthStore.persist.hasHydrated()) {
+      setHydrated(true);
+    }
+
+    return () => unsub();
+  }, []);
+
+  if (!hydrated) return null;
+
+  if (!token) return <Navigate to="/login" replace />;
 
   return children;
 };
