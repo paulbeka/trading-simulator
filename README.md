@@ -1,49 +1,108 @@
 # What is this project?
 
-The idea is to build a live PnL calculator for users with different positions in equity and derivatives. This should be updated live, and systems should be updated using Kafka to reduce dependency between systems whilst maintaining high performance. Price updates should reverberate throughout the system, updating in-cache PnL, user position values, populate a websocket, and persist realised PnL.
+The goal of this project is to build a live PnL calculator for users holding positions in equities and derivatives.
 
-I want to demonstrate my skillset when it comes to live PnL maintainence systems and valuations know-how.
+The system is designed to update PnL in real time, using Kafka to decouple services while maintaining high performance. Price updates should propagate through the system efficiently — updating in-memory PnL, recalculating user position values, pushing updates via WebSockets, and persisting realised PnL where needed.
+
+This project is also a way for me to demonstrate my skillset in:
+- Live PnL systems
+- Valuation logic (especially derivatives)
+- Event-driven architecture
+
+---
 
 # Backend
 
-The backend is built entirely in C#, and the event pipeline is maintained via Kafka.
+The backend is built entirely in **C#**, with an event-driven architecture powered by **Kafka**.
 
+The idea is to keep services loosely coupled while ensuring fast and reliable data flow across the system.
+
+---
 
 # Frontend
 
-Uses Vite, React, and TypeScript.
+The frontend uses:
+- **Vite**
+- **React**
+- **TypeScript**
 
+It provides a dashboard where users can manage positions and view their live PnL.
+
+---
 
 # The Plan
 
-We can't fully simulate getting live prices, so we'll fetch from Yahoo Finance the positions that we currently own for equities. 
+Since we can’t fully simulate real market data, we’ll fetch live prices from Yahoo Finance for equities.
 
-Workflow:
-- User choses to buy/sell assets on a dashboard. They can look them up with a searchbar.
-- If they place an order, it's stored somewhere and bought at the price the order is executed.
-- That goes into a positions database
-- On the dashboard, the user can see their live P&L from different assets. 
+## Core Workflow
 
-Options:
-- the user can buy options, which also has a P&L component. 
-- The option is priced using black scholes etc (+ maybe using some other methods such as vol smiles to properly model the real prices)
-- The option can then be re-sold or executed as necessary
+- Users can search for assets and choose to buy/sell via a dashboard.
+- When an order is placed, it is executed at the current price and stored.
+- The position is persisted in a positions database.
+- The dashboard displays live PnL across all user positions.
 
+---
 
-Ok so here's the plan:
- - I now have updates on stock prices published to Kafka
- - Create a PnL consumer
- - At init, create two maps, user->positions and tickers-> user. Populate the initial prices
- - Update prices in memory as new prices come in [long term goal use sharding]
- - For each stock update, update user PnL [could this be partitioned into kafka?]
- - With new user PnL, use kafka to publish to the .NET api section can send a webhook push
- - the webhook push should send an initial format, then only send updates 
- - the updates should include new stock prices which pertain to the user (and include PnL)
+# Options Support
 
-Later:
- - Make sure new orders have their own queue, and execute at a certain price and get persisted to both memory and the positions database (which should include when the stock was bought)
- - include valuations for options of different types
+- Users can trade options alongside equities.
+- Options are priced using Black-Scholes (with potential extensions like volatility smiles for more realistic pricing).
+- Options can be:
+  - Resold
+  - Exercised
 
+This adds a more realistic valuation layer to the system.
 
- Make sure to calculate unrealised PnL + realised PnL
- Ensure proper kafka singleton injection configuration with constants dealt with
+---
+
+# System Design (Current Direction)
+
+- Price updates are published to Kafka.
+- A PnL consumer processes incoming price updates.
+
+## Initial Setup
+
+- On startup:
+  - Build in-memory maps:
+    - `user -> positions`
+    - `ticker -> users`
+  - Populate initial prices.
+
+## Real-Time Updates
+
+- As new prices arrive:
+  - Update prices in memory *(long-term: introduce sharding for scalability)*.
+  - Recalculate user PnL incrementally.
+  - *(Potential improvement: partition PnL updates across Kafka for scalability.)*
+
+## Data Propagation
+
+- Updated PnL is published back to Kafka.
+- The .NET API layer consumes this and pushes updates via WebSockets.
+- WebSocket behavior:
+  - Send an initial full snapshot
+  - Then send incremental updates only
+- Updates include:
+  - Relevant price changes
+  - Updated user PnL
+
+---
+
+# Next Steps
+
+- Introduce a dedicated queue for order execution:
+  - Orders executed at a defined price
+  - Persisted both in memory and in the positions database
+  - Include execution timestamps
+
+- Extend valuation capabilities:
+  - Support multiple option pricing models
+  - Improve realism of derivatives pricing
+
+- Ensure correct PnL tracking:
+  - Unrealised PnL
+  - Realised PnL
+
+- Improve infrastructure:
+  - Proper Kafka configuration (singleton injection, constants, etc.)
+  - Scalability improvements (e.g. partitioning, sharding)
