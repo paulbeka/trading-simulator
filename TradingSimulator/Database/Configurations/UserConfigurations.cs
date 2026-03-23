@@ -14,7 +14,7 @@ namespace Database.Configurations
 
             builder.Property(x => x.Id)
                 .ValueGeneratedNever();
-
+                
             builder.Property(x => x.Email)
                 .IsRequired()
                 .HasMaxLength(320);

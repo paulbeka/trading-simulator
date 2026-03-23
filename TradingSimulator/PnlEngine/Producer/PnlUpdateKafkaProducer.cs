@@ -1,6 +1,7 @@
 ﻿using Confluent.Kafka;
 using System.Text.Json;
 using PnlEngine.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace PnlEngine.Producer
 {
@@ -9,16 +10,22 @@ namespace PnlEngine.Producer
         private readonly IProducer<string, string> _producer;
         private readonly string _topic;
 
-        public PnlUpdateKafkaProducer(string bootstrapServers, string topic)
+        public PnlUpdateKafkaProducer(IConfiguration config)
         {
-            var config = new ProducerConfig
+            string bootstrapServers = config["Kafka:BootstrapServers"]
+                ?? throw new InvalidOperationException("Kafka:BootstrapServers is missing");
+
+            string topic = config["Kafka:PnlUpdateTopic"]
+                ?? throw new InvalidOperationException("Kafka:PnlUpdateTopic is missing");
+
+            var producerConfig = new ProducerConfig
             {
                 BootstrapServers = bootstrapServers,
                 Acks = Acks.All,
                 EnableIdempotence = true
             };
 
-            _producer = new ProducerBuilder<string, string>(config).Build();
+            _producer = new ProducerBuilder<string, string>(producerConfig).Build();
             _topic = topic;
         }
 
