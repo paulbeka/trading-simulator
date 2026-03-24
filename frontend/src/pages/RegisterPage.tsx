@@ -23,6 +23,10 @@ const RegisterPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const redirectToLogin = () => {
+    navigate("/login");
+  }
+
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -58,6 +62,8 @@ const RegisterPage = () => {
           <Typography variant="h5" mb={2}>
             Register
           </Typography>
+
+          <Typography>Already have an account? <span style={{ color: "blue", cursor: "pointer" }} onClick={redirectToLogin}>Login here.</span ></Typography>
 
           <TextField
             label="Email"

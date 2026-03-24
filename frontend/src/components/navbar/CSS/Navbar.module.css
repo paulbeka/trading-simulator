@@ -1,0 +1,8 @@
+.navbar_container {
+    background-color: aqua;
+}
+
+.navbar_content {
+    max-width: 1200px;
+    margin: 0 auto;
+}

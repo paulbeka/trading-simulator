@@ -7,25 +7,24 @@ namespace MarketDataService.Workers
 {
     internal class MarketDataWorker : BackgroundService
     {
-        private readonly int DELAY = 1000;
+        private readonly int DELAY = 1000 * 30;
 
-        private readonly FinnhubProvider _provider;
+        private readonly PolygonProvider _provider;
         private readonly KafkaProducer _producer;
 
         public MarketDataWorker()
         {
-            _provider = new FinnhubProvider();
+            _provider = new PolygonProvider();
             _producer = new KafkaProducer();
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            // TODO: fetch the tickers from live price cache
-            var tickers = new[] { "AAPL", "GOOGL" };
             while (!stoppingToken.IsCancellationRequested)
             {
+                var tickers = new[] { "AAPL", "GOOGL" };
                 var prices = await _provider.GetPricesAsync(tickers);
-                Console.WriteLine(prices);
+
                 foreach (var (ticker, price) in prices)
                 {
                     var message = new MarketDataMessage

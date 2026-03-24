@@ -11,6 +11,7 @@ import {
 import { login } from "../api/authApi";
 import { useAuthStore } from "../auth/authStore";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const LoginPage = () => {
   const setAuth = useAuthStore((s) => s.setAuth);
@@ -22,6 +23,15 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
+  type JwtPayload = {
+    sub: string;
+    email: string;
+  };
+
+  const redirectToSignup = () => {
+    navigate("/register");
+  }
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -29,7 +39,12 @@ const LoginPage = () => {
 
     try {
       const data = await login(email, password);
-      setAuth(data.user, data.token);
+      const decoded = jwtDecode<JwtPayload>(data.token);
+
+      const user = {
+        id: decoded.sub,
+      };
+      setAuth(user, data.token);
 
       navigate("/dashboard");
     } catch {
@@ -52,7 +67,7 @@ const LoginPage = () => {
             Login
           </Typography>
 
-          <Typography>No account? Sign up here.</Typography>
+          <Typography>No account? <span style={{ color: "blue", cursor: "pointer" }} onClick={redirectToSignup}>Sign up here.</span ></Typography>
 
           <TextField
             label="Email"

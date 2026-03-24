@@ -1,41 +1,60 @@
+using System.Text;
 using Database.DbContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using TradingApi.Options;
-using TradingApi.Services;
-using TradingApi.Services.Interfaces;
 using TradingApi.Hubs;
 using TradingApi.Kafka.Config;
 using TradingApi.Kafka.Consumer;
+using TradingApi.Options;
+using TradingApi.Services;
+using TradingApi.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Controllers + OpenAPI
 builder.Services.AddControllers();
-
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
-builder.Services.AddEndpointsApiExplorer();
-
+// Config
 builder.Services.Configure<JwtConfig>(
     builder.Configuration.GetSection(JwtConfig.SectionName));
 
-builder.Services.AddDbContext<TradingDbContext>(options =>
+builder.Services.Configure<KafkaSettings>(
+    builder.Configuration.GetSection("Kafka"));
+
+builder.Services.Configure<PolygonConfig>(options =>
 {
-    var connectionString = builder.Configuration.GetConnectionString("DbConnection");
-    options.UseNpgsql(connectionString);
+    options.ApiKey = builder.Configuration["POLYGON_API"]
+        ?? throw new Exception("POLYGON_API not set");
 });
 
-builder.Services.Configure<KafkaSettings>(builder.Configuration.GetSection("Kafka"));
+// DbContext
+var connectionString = builder.Configuration.GetConnectionString("DbConnection")
+    ?? throw new InvalidOperationException("Connection string 'DbConnection' is missing.");
 
+builder.Services.AddDbContext<TradingDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
+// Other services
+builder.Services.AddMemoryCache();
+builder.Services.AddHttpClient<IPolygonService, PolygonService>();
 builder.Services.AddSignalR();
-
 builder.Services.AddHostedService<PnlConsumer>();
 
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+
+// JWT config
 var jwtConfig = builder.Configuration
     .GetSection(JwtConfig.SectionName)
-    .Get<JwtConfig>() ?? throw new InvalidOperationException("JwtConfig section is missing.");
+    .Get<JwtConfig>()
+    ?? throw new InvalidOperationException("JwtConfig section is missing.");
+
+if (string.IsNullOrWhiteSpace(jwtConfig.Key))
+    throw new InvalidOperationException("JWT key is missing.");
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -61,7 +80,7 @@ builder.Services
         {
             OnMessageReceived = context =>
             {
-                var accessToken = context.Request.Query["token"];
+                var accessToken = context.Request.Query["access_token"];
                 var path = context.HttpContext.Request.Path;
 
                 if (!string.IsNullOrEmpty(accessToken) &&
@@ -77,20 +96,19 @@ builder.Services
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
-builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
-
+// CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend",
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:5173") 
-                  .AllowAnyHeader()
-                  .AllowAnyMethod()
-                  .AllowCredentials();
-        });
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins(
+                "http://localhost:5173",
+                "https://localhost:5173"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
 });
 
 var app = builder.Build();
@@ -101,8 +119,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseRouting();
 
 app.UseCors("AllowFrontend");
 

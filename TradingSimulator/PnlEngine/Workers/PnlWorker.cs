@@ -1,7 +1,4 @@
-﻿using PnlEngine.Consumers;
-using PnlEngine.Services;
-
-namespace PnlEngine.Workers
+﻿namespace PnlEngine.Workers
 {
     internal class PnlWorker : BackgroundService
     {

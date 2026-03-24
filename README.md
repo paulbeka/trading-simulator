@@ -106,3 +106,11 @@ This adds a more realistic valuation layer to the system.
 - Improve infrastructure:
   - Proper Kafka configuration (singleton injection, constants, etc.)
   - Scalability improvements (e.g. partitioning, sharding)
+
+
+# Notes
+
+- For a user to chose which stock to buy, we need to have fetched the ticker data for that stock. Yet that's not possible to do in our engine unless we keep track of it
+- Keep a hotset of currently needed tickers
+- TODO: add a live streaming from polygon websocket prices 
+- For options: model the IV dist based on last EOD and then recalc prices on surface 

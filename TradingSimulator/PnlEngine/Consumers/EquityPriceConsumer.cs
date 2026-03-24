@@ -1,7 +1,9 @@
 ﻿using Confluent.Kafka;
 using Microsoft.Extensions.Options;
 using PnlEngine.Consumers.Config;
+using PnlEngine.Models;
 using PnlEngine.Services;
+using System.Text.Json;
 
 internal class EquityPriceConsumer
 {
@@ -25,5 +27,34 @@ internal class EquityPriceConsumer
         _topic = kafka.EquityTopic;
 
         _consumer = new ConsumerBuilder<Ignore, string>(config).Build();
+    }
+
+    public async Task ConsumeEquityPricesAsync(CancellationToken stoppingToken)
+    {
+        _consumer.Subscribe(_topic);
+        try
+        {
+            while (!stoppingToken.IsCancellationRequested)
+            {
+                HandlePriceUpdate(_consumer.Consume());
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+            _consumer.Close();
+        }
+    }
+
+    private void HandlePriceUpdate(ConsumeResult<Ignore, string> message)
+    {
+        Console.WriteLine($"Recieved: {message.Message.Value}");
+
+        var priceUpdate = JsonSerializer.Deserialize<PriceUpdate>(message.Message.Value);
+
+        if (priceUpdate != null)
+        {
+            _pnlService.HandlePriceUpdate(priceUpdate.Ticker, priceUpdate.Price);
+        }
     }
 }

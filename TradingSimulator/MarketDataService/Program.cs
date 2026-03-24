@@ -4,7 +4,7 @@ using MarketDataService.Workers;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-builder.Services.AddSingleton<FinnhubProvider>();
+builder.Services.AddSingleton<PolygonProvider>();
 builder.Services.AddSingleton<KafkaProducer>();
 builder.Services.AddHostedService<MarketDataWorker>();
 
