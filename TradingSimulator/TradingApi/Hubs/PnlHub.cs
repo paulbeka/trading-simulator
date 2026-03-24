@@ -13,5 +13,15 @@ namespace TradingApi.Hubs
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, userId);
         }
+
+        public async Task SubscribeTicker(string ticker)
+        {
+            await Groups.AddToGroupAsync(Context.ConnectionId, ticker);
+        }
+
+        public async Task UnsubscribeTicker(string ticker)
+        {
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, ticker);
+        }
     }
 }

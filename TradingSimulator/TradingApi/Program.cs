@@ -46,6 +46,7 @@ builder.Services.AddHostedService<PnlConsumer>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+builder.Services.AddScoped<IMarketDataService, MarketDataService>();
 
 // JWT config
 var jwtConfig = builder.Configuration

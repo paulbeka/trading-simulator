@@ -114,3 +114,6 @@ This adds a more realistic valuation layer to the system.
 - Keep a hotset of currently needed tickers
 - TODO: add a live streaming from polygon websocket prices 
 - For options: model the IV dist based on last EOD and then recalc prices on surface 
+
+- For when searching stocks and getting their price: make a "hub" for the price of each individual ticker and subscribe to it
+- or we can have it in one socket?
