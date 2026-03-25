@@ -38,8 +38,9 @@ namespace TradingApi.Services
 
             decimal executionPrice = marketPrice.Value;
             decimal total = executionPrice * request.Quantity;
+            var side = Enum.Parse<TradeSide>(request.Side, ignoreCase: true);
 
-            if (request.Side.Equals(TradeSide.Buy))
+            if (side == TradeSide.Buy)
             {
                 if (account.CashBalance < total)
                     throw new Exception("Insufficient funds");
@@ -71,7 +72,7 @@ namespace TradingApi.Services
                     position.UpdatedAt = DateTime.UtcNow;
                 }
             }
-            else if (request.Side.Equals(TradeSide.Sell))
+            else if (side == TradeSide.Sell)
             {
                 if (position == null || position.Quantity < request.Quantity)
                     throw new Exception("Not enough shares");

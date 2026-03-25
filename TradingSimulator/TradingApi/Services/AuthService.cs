@@ -11,6 +11,8 @@ public sealed class AuthService : IAuthService
     private readonly TradingDbContext _dbContext;
     private readonly IJwtTokenService _jwtTokenService;
 
+    private const decimal DEFAULT_STARTING_AMOUNT = 100_000m;
+
     public AuthService(
         TradingDbContext dbContext,
         IJwtTokenService jwtTokenService)
@@ -20,8 +22,8 @@ public sealed class AuthService : IAuthService
     }
 
     public async Task<AuthResponse> RegisterAsync(
-        RegisterRequest request,
-        CancellationToken cancellationToken)
+    RegisterRequest request,
+    CancellationToken cancellationToken)
     {
         var email = request.Email.Trim().ToLowerInvariant();
 
@@ -42,7 +44,16 @@ public sealed class AuthService : IAuthService
             PasswordHash = passwordHash,
         };
 
+        var account = new Account
+        {
+            UserId = user.Id,
+            CashBalance = DEFAULT_STARTING_AMOUNT,
+            UpdatedAt = DateTime.UtcNow
+        };
+
         _dbContext.Users.Add(user);
+        _dbContext.Accounts.Add(account);
+
         await _dbContext.SaveChangesAsync(cancellationToken);
 
         var (token, expiresAtUtc) = _jwtTokenService.GenerateToken(user);

@@ -1,96 +1,188 @@
 import React, { useState } from "react";
 import { Box, Typography, Paper, IconButton, Button, TextField } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import StockSearcher from "./StockSearcher";
+import type { Ticker } from "./StockSearcher";
+import { subscribe, unsubscribe } from "../../websocket/subscriptions";
+import { useMarketStore } from "../../stores/marketStore";
+import { buyStock, sellStock } from "../../api/api";
 
-type Props = {
-  ticker: string;
-  name: string;
-  exchange: string;
-  type: string;
-  price?: number;
-  quantityHeld?: number;
-  onDelete: () => void;
-  onBuy: (qty: number) => void;
-  onSell: (qty: number) => void;
-};
+const TickerSelector: React.FC = () => {
+  const [selected, setSelected] = useState<Ticker[]>([]);
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
+  const prices = useMarketStore((state) => state.prices);
 
-const TickerRow: React.FC<Props> = ({
-  ticker,
-  name,
-  exchange,
-  type,
-  price,
-  quantityHeld = 0,
-  onDelete,
-  onBuy,
-  onSell,
-}) => {
-  const [qty, setQty] = useState(1);
+  const handleSelect = async (ticker: Ticker) => {
+    setSelected((prev) => {
+      if (prev.find((t) => t.ticker === ticker.ticker)) return prev;
+      return [...prev, ticker];
+    });
 
-  const total = price ? qty * price : 0;
+    setQuantities((prev) => ({
+      ...prev,
+      [ticker.ticker]: 1,
+    }));
+
+    await subscribe(ticker.ticker);
+  };
+
+  const handleDelete = async (tickerToDelete: string) => {
+    setSelected((prev) =>
+      prev.filter((t) => t.ticker !== tickerToDelete)
+    );
+
+    setQuantities((prev) => {
+      const updated = { ...prev };
+      delete updated[tickerToDelete];
+      return updated;
+    });
+
+    await unsubscribe(tickerToDelete);
+  };
+
+  const updateQuantity = (ticker: string, delta: number) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [ticker]: Math.max(1, (prev[ticker] || 1) + delta),
+    }));
+  };
+
+  const handleQuantityChange = (ticker: string, value: string) => {
+    const num = parseInt(value, 10);
+    setQuantities((prev) => ({
+      ...prev,
+      [ticker]: isNaN(num) || num < 1 ? 1 : num,
+    }));
+  };
+
+  const handleBuy = async (ticker: string, quantity: number, price: number) => {
+    if (!price || isNaN(price)) return;
+    try {
+      const res = await buyStock(ticker, quantity, price);
+      console.log(res);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleSell = async (ticker: string, quantity: number, price: number) => {
+    if (!price || isNaN(price)) return;
+    try {
+      const res = await sellStock(ticker, quantity, price);
+      console.log(res);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
-    <Paper
-      sx={{
-        p: 2,
-        mb: 1,
-        borderRadius: 2,
-        display: "flex",
-        alignItems: "center",
-        gap: 2,
-        flexWrap: "wrap",
-      }}
-    >
-      <Box sx={{ minWidth: 120 }}>
-        <Typography variant="h6">{ticker}</Typography>
-        <Typography variant="caption" color="text.secondary">
-          {name}
-        </Typography>
+    <Box>
+      <StockSearcher onSelect={handleSelect} />
+
+      <Box sx={{ mt: 3 }}>
+        {selected.length === 0 ? (
+          <Typography variant="body2" color="text.secondary">
+            No tickers selected yet
+          </Typography>
+        ) : (
+          selected.map((ticker) => {
+            const price = prices[ticker.ticker];
+            const quantity = quantities[ticker.ticker] || 1;
+            const total =
+              price && !isNaN(price) ? (price * quantity).toFixed(2) : null;
+
+            return (
+              <Paper
+                key={ticker.ticker}
+                sx={{
+                  p: 2,
+                  mb: 1,
+                  borderRadius: 2,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 2,
+                  flexWrap: "wrap",
+                }}
+              >
+                <Box sx={{ minWidth: 120 }}>
+                  <Typography variant="h6">{ticker.ticker}</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {ticker.name}
+                  </Typography>
+                </Box>
+
+                <Typography sx={{ minWidth: 100 }}>
+                  {price ?? "Loading..."}
+                </Typography>
+
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                  <Button
+                    size="small"
+                    variant="outlined"
+                    onClick={() => updateQuantity(ticker.ticker, -1)}
+                  >
+                    -
+                  </Button>
+
+                  <TextField
+                    size="small"
+                    type="number"
+                    value={quantity}
+                    onChange={(e) =>
+                      handleQuantityChange(ticker.ticker, e.target.value)
+                    }
+                    sx={{ width: 80 }}
+                    inputProps={{ min: 1 }}
+                  />
+
+                  <Button
+                    size="small"
+                    variant="outlined"
+                    onClick={() => updateQuantity(ticker.ticker, 1)}
+                  >
+                    +
+                  </Button>
+                </Box>
+
+                <Typography sx={{ minWidth: 120 }}>
+                  Total: {total ? `$${total}` : "—"}
+                </Typography>
+
+                <Box sx={{ display: "flex", gap: 1 }}>
+                  <Button
+                    variant="contained"
+                    color="success"
+                    onClick={() =>
+                      handleBuy(ticker.ticker, quantity, Number(price))
+                    }
+                  >
+                    Buy
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() =>
+                      handleSell(ticker.ticker, quantity, Number(price))
+                    }
+                  >
+                    Sell
+                  </Button>
+                </Box>
+
+                <IconButton
+                  onClick={() => handleDelete(ticker.ticker)}
+                  color="error"
+                  sx={{ marginLeft: "auto" }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Paper>
+            );
+          })
+        )}
       </Box>
-
-      <Typography sx={{ width: 80 }}>
-        {price ?? "Loading..."}
-      </Typography>
-
-      <Typography sx={{ width: 100 }}>
-        Held: {quantityHeld}
-      </Typography>
-
-      <TextField
-        type="number"
-        size="small"
-        value={qty}
-        onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
-        sx={{ width: 80 }}
-      />
-
-      <Typography sx={{ width: 120 }}>
-        {price ? `€${total.toFixed(2)}` : "-"}
-      </Typography>
-
-      <Button
-        variant="contained"
-        color="success"
-        onClick={() => onBuy(qty)}
-        disabled={!price}
-      >
-        Buy
-      </Button>
-
-      <Button
-        variant="contained"
-        color="warning"
-        onClick={() => onSell(qty)}
-        disabled={!price || quantityHeld === 0}
-      >
-        Sell
-      </Button>
-
-      <IconButton onClick={onDelete} color="error">
-        <DeleteIcon />
-      </IconButton>
-    </Paper>
+    </Box>
   );
 };
 
-export default TickerRow;
+export default TickerSelector;

@@ -7,7 +7,7 @@ namespace MarketDataService.Workers
 {
     internal class MarketDataWorker : BackgroundService
     {
-        private readonly int DELAY = 1000 * 30;
+        private readonly int DELAY = 1000 * 1;
 
         private readonly PolygonProvider _provider;
         private readonly KafkaProducer _producer;
