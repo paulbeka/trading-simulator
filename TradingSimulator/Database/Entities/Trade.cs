@@ -12,5 +12,6 @@ namespace Database.Entities
         public TradeSide Side { get; set; }
         public DateTime Timestamp { get; set; }
         public DateTime CreatedAt { get; set; }
+
     }
 }

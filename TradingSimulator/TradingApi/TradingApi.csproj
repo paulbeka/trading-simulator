@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Database\Database.csproj" />
+    <ProjectReference Include="..\PnlEngine\PnlEngine.csproj" />
   </ItemGroup>
 
 </Project>

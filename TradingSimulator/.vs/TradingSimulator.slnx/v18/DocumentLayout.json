@@ -3,64 +3,12 @@
   "WorkspaceRootPath": "C:\\Workspace\\trading-simulator\\TradingSimulator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\services\\polygonservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\services\\polygonservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\controllers\\tickerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\controllers\\tickerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\marketdataservice\\workers\\marketdataworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|solutionrelative:marketdataservice\\workers\\marketdataworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\marketdataservice\\providers\\polygonprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|solutionrelative:marketdataservice\\providers\\polygonprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\marketdataservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|solutionrelative:marketdataservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\marketdataservice\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|solutionrelative:marketdataservice\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\marketdataservice\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|solutionrelative:marketdataservice\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\marketdataservice\\kafkaproducers\\kafkaproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|solutionrelative:marketdataservice\\kafkaproducers\\kafkaproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\marketdataservice\\models\\marketdatamessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4866954-A0EA-13B1-B32C-F344BFF6AE39}|MarketDataService\\MarketDataService.csproj|solutionrelative:marketdataservice\\models\\marketdatamessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\producer\\pnlupdatekafkaproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\producer\\pnlupdatekafkaproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\workers\\pnlworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\workers\\pnlworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\consumers\\config\\kafkaconsumerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\consumers\\config\\kafkaconsumerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\consumers\\equitypriceconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\consumers\\equitypriceconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -72,6 +20,19 @@
           "DockedWidth": 200,
           "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PnlWorker.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Workers\\PnlWorker.cs",
+              "RelativeDocumentMoniker": "PnlEngine\\Workers\\PnlWorker.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Workers\\PnlWorker.cs",
+              "RelativeToolTip": "PnlEngine\\Workers\\PnlWorker.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T14:44:47.731Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -94,197 +55,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TickersController.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Controllers\\TickersController.cs",
-              "RelativeDocumentMoniker": "TradingApi\\Controllers\\TickersController.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Controllers\\TickersController.cs",
-              "RelativeToolTip": "TradingApi\\Controllers\\TickersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T15:45:47.22Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PolygonService.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\PolygonService.cs",
-              "RelativeDocumentMoniker": "TradingApi\\Services\\PolygonService.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\PolygonService.cs*",
-              "RelativeToolTip": "TradingApi\\Services\\PolygonService.cs*",
-              "ViewState": "AgIAABUAAAAAAAAAAAAmwDYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T15:43:51.833Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PolygonProvider.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\Providers\\PolygonProvider.cs",
-              "RelativeDocumentMoniker": "MarketDataService\\Providers\\PolygonProvider.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\Providers\\PolygonProvider.cs",
-              "RelativeToolTip": "MarketDataService\\Providers\\PolygonProvider.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCcAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T14:58:15.181Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MarketDataWorker.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\Workers\\MarketDataWorker.cs",
-              "RelativeDocumentMoniker": "MarketDataService\\Workers\\MarketDataWorker.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\Workers\\MarketDataWorker.cs",
-              "RelativeToolTip": "MarketDataService\\Workers\\MarketDataWorker.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCoAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T09:07:11.061Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\Program.cs",
-              "RelativeDocumentMoniker": "MarketDataService\\Program.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\Program.cs",
-              "RelativeToolTip": "MarketDataService\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T14:47:41.129Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Worker.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\Worker.cs",
-              "RelativeDocumentMoniker": "MarketDataService\\Worker.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\Worker.cs",
-              "RelativeToolTip": "MarketDataService\\Worker.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T14:47:39.094Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": ".env",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\.env",
-              "RelativeDocumentMoniker": "MarketDataService\\.env",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\.env",
-              "RelativeToolTip": "MarketDataService\\.env",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-03-24T14:29:05.547Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "KafkaProducer.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\KafkaProducers\\KafkaProducer.cs",
-              "RelativeDocumentMoniker": "MarketDataService\\KafkaProducers\\KafkaProducer.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\KafkaProducers\\KafkaProducer.cs",
-              "RelativeToolTip": "MarketDataService\\KafkaProducers\\KafkaProducer.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAowBYAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T09:06:50.452Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\appsettings.json",
-              "RelativeDocumentMoniker": "PnlEngine\\appsettings.json",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\appsettings.json",
-              "RelativeToolTip": "PnlEngine\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-23T22:18:48.085Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "PnlUpdateKafkaProducer.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Producer\\PnlUpdateKafkaProducer.cs",
-              "RelativeDocumentMoniker": "PnlEngine\\Producer\\PnlUpdateKafkaProducer.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Producer\\PnlUpdateKafkaProducer.cs",
-              "RelativeToolTip": "PnlEngine\\Producer\\PnlUpdateKafkaProducer.cs",
-              "ViewState": "AgIAAAgAAAAgZWZmZmYowBsAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T22:19:11.624Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MarketDataMessage.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\Models\\MarketDataMessage.cs",
-              "RelativeDocumentMoniker": "MarketDataService\\Models\\MarketDataMessage.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\MarketDataService\\Models\\MarketDataMessage.cs",
-              "RelativeToolTip": "MarketDataService\\Models\\MarketDataMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T09:07:02.427Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PnlWorker.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Workers\\PnlWorker.cs",
-              "RelativeDocumentMoniker": "PnlEngine\\Workers\\PnlWorker.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Workers\\PnlWorker.cs",
-              "RelativeToolTip": "PnlEngine\\Workers\\PnlWorker.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T22:28:23.895Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "KafkaConsumerConfig.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Consumers\\Config\\KafkaConsumerConfig.cs",
-              "RelativeDocumentMoniker": "PnlEngine\\Consumers\\Config\\KafkaConsumerConfig.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Consumers\\Config\\KafkaConsumerConfig.cs",
-              "RelativeToolTip": "PnlEngine\\Consumers\\Config\\KafkaConsumerConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T22:24:18.31Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "EquityPriceConsumer.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Consumers\\EquityPriceConsumer.cs",
-              "RelativeDocumentMoniker": "PnlEngine\\Consumers\\EquityPriceConsumer.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Consumers\\EquityPriceConsumer.cs",
-              "RelativeToolTip": "PnlEngine\\Consumers\\EquityPriceConsumer.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAqwCEAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T22:21:51.036Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Program.cs",
               "RelativeDocumentMoniker": "PnlEngine\\Program.cs",
               "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Program.cs",
               "RelativeToolTip": "PnlEngine\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T22:14:51.888Z"
+              "WhenOpened": "2026-03-25T14:44:29.23Z",
+              "EditorCaption": ""
             }
           ]
         }

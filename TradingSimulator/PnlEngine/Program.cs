@@ -1,22 +1,27 @@
-using PnlEngine.Consumers;
 using PnlEngine.Consumers.Config;
+using PnlEngine.Interfaces;
 using PnlEngine.Producer;
-using PnlEngine.Services;
-using PnlEngine.Stores;
+using PnlEngine.Redis;
 using PnlEngine.Workers;
+using StackExchange.Redis;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-builder.Services.AddSingleton<PnlStore>();
-builder.Services.AddSingleton<PriceCache>();
-builder.Services.AddSingleton<UserToTickerIndex>();
-builder.Services.AddSingleton<TickerToUserIndex>();
-builder.Services.AddSingleton<EquityPriceConsumer>();
+var redis = ConnectionMultiplexer.Connect("localhost:6379");
+builder.Services.AddSingleton<IConnectionMultiplexer>(redis);
+
+builder.Services.AddSingleton<IPriceStore, RedisPriceStore>();
+builder.Services.AddSingleton<IUserPositionStore, RedisUserPositionStore>();
+builder.Services.AddSingleton<ITickerUserIndex, RedisTickerUserIndex>();
+builder.Services.AddSingleton<IPnlStore, RedisPnlStore>();
+
 builder.Services.AddSingleton<PnlService>();
-builder.Services.AddSingleton<UserPositions>();
 builder.Services.AddSingleton<PnlUpdateKafkaProducer>();
 
-builder.Services.Configure<KafkaConsumerConfig>(builder.Configuration.GetSection("Kafka"));
+builder.Services.AddSingleton<EquityPriceConsumer>();
+builder.Services.Configure<KafkaConsumerConfig>(
+    builder.Configuration.GetSection("Kafka")
+);
 
 builder.Services.AddHostedService<PnlWorker>();
 

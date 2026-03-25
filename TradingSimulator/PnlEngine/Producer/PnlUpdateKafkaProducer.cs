@@ -1,11 +1,10 @@
 ﻿using Confluent.Kafka;
 using System.Text.Json;
 using PnlEngine.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace PnlEngine.Producer
 {
-    internal class PnlUpdateKafkaProducer : IDisposable
+    public class PnlUpdateKafkaProducer : IDisposable
     {
         private readonly IProducer<string, string> _producer;
         private readonly string _topic;
