@@ -4,18 +4,18 @@ using Database.Enums;
 using Microsoft.EntityFrameworkCore;
 using TradingApi.Contracts.Trading;
 using TradingApi.Services.Interfaces;
+using TradingApi.Services.StoreInterfaces;
 
 namespace TradingApi.Services
 {
     public class TradingService : ITradingService
     {
         private readonly TradingDbContext _dbContext;
-        private readonly PriceCache _priceCache;
-
-        public TradingService(TradingDbContext context, PriceCache priceCache)
+        private readonly IPriceStore _priceStore;
+        public TradingService(TradingDbContext context, IPriceStore priceStore)
         {
             _dbContext = context;
-            _priceCache = priceCache;
+            _priceStore = priceStore;
         }
 
         public async Task<TradeResponse> ExecuteTradeAsync(Guid userId, TradeRequest request)
@@ -31,7 +31,7 @@ namespace TradingApi.Services
             var position = await _dbContext.Positions
                 .FirstOrDefaultAsync(p => p.UserId == userId && p.Symbol == request.Ticker);
 
-            var marketPrice = _priceCache.GetPrice(request.Ticker);
+            var marketPrice = await _priceStore.GetPrice(request.Ticker);
 
             if (marketPrice == null)
                 throw new Exception($"No market price available for {request.Ticker}");

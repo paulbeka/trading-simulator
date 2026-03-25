@@ -2,19 +2,23 @@ using Database.DbContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using StackExchange.Redis;
 using System.Text;
 using TradingApi.Hubs;
 using TradingApi.Kafka.Config;
 using TradingApi.Kafka.Consumer;
 using TradingApi.Kafka.Consumers;
 using TradingApi.Options;
+using TradingApi.Redis;
 using TradingApi.Services;
 using TradingApi.Services.Interfaces;
+using TradingApi.Services.StoreInterfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Controllers + OpenAPI
 builder.Services.AddControllers();
+builder.Services.AddMemoryCache();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
@@ -41,8 +45,14 @@ var connectionString = builder.Configuration.GetConnectionString("DbConnection")
 builder.Services.AddDbContext<TradingDbContext>(options =>
     options.UseNpgsql(connectionString));
 
+// Redis 
+var redisConnection = builder.Configuration["Redis:ConnectionString"] ?? "localhost:6379";
+var redis = ConnectionMultiplexer.Connect(redisConnection);
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(redis);
+builder.Services.AddSingleton<IPriceStore, RedisPriceStore>();
+
 // Other services
-builder.Services.AddMemoryCache();
 builder.Services.AddHttpClient<IPolygonService, PolygonService>();
 builder.Services.AddSignalR();
 builder.Services.AddHostedService<PnlConsumer>();
@@ -52,6 +62,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<IMarketDataService, MarketDataService>();
+builder.Services.AddScoped<ITradingService, TradingService>();
 
 // JWT config
 var jwtConfig = builder.Configuration

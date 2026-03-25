@@ -1,78 +1,96 @@
 import React, { useState } from "react";
-import { Box, Typography, Paper, IconButton } from "@mui/material";
+import { Box, Typography, Paper, IconButton, Button, TextField } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import StockSearcher from "./StockSearcher";
-import type { Ticker } from "./StockSearcher";
-import { subscribe, unsubscribe } from "../../websocket/subscriptions";
-import { useMarketStore } from "../../stores/marketStore";
 
-const TickerSelector: React.FC = () => {
-  const [selected, setSelected] = useState<Ticker[]>([]);
-  const prices = useMarketStore((state) => state.prices);
-  
-  const handleSelect = async (ticker: Ticker) => {
-    setSelected((prev) => {
-      if (prev.find((t) => t.ticker === ticker.ticker)) return prev;
-      return [...prev, ticker];
-    });
+type Props = {
+  ticker: string;
+  name: string;
+  exchange: string;
+  type: string;
+  price?: number;
+  quantityHeld?: number;
+  onDelete: () => void;
+  onBuy: (qty: number) => void;
+  onSell: (qty: number) => void;
+};
 
-    await subscribe(ticker.ticker);
-  };
+const TickerRow: React.FC<Props> = ({
+  ticker,
+  name,
+  exchange,
+  type,
+  price,
+  quantityHeld = 0,
+  onDelete,
+  onBuy,
+  onSell,
+}) => {
+  const [qty, setQty] = useState(1);
 
-  const handleDelete = async (tickerToDelete: string) => {
-    setSelected((prev) =>
-      prev.filter((t) => t.ticker !== tickerToDelete)
-    );
-
-    await unsubscribe(tickerToDelete);
-  };
+  const total = price ? qty * price : 0;
 
   return (
-    <Box>
-      <StockSearcher onSelect={handleSelect} />
-
-      <Box sx={{ mt: 3 }}>
-        {selected.length === 0 ? (
-          <Typography variant="body2" color="text.secondary">
-            No tickers selected yet
-          </Typography>
-        ) : (
-          selected.map((ticker) => (
-            <Paper
-              key={ticker.ticker}
-              sx={{
-                p: 2,
-                mb: 1,
-                borderRadius: 2,
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Box>
-                <Typography variant="h6">
-                  {ticker.ticker}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {ticker.name} • {ticker.primary_exchange} • {ticker.type}
-                </Typography>
-                <Typography variant="h6">
-                  {prices[ticker.ticker] ?? "Loading..."}
-                </Typography>
-              </Box>
-
-              <IconButton
-                onClick={() => handleDelete(ticker.ticker)}
-                color="error"
-              >
-                <DeleteIcon />
-              </IconButton>
-            </Paper>
-          ))
-        )}
+    <Paper
+      sx={{
+        p: 2,
+        mb: 1,
+        borderRadius: 2,
+        display: "flex",
+        alignItems: "center",
+        gap: 2,
+        flexWrap: "wrap",
+      }}
+    >
+      <Box sx={{ minWidth: 120 }}>
+        <Typography variant="h6">{ticker}</Typography>
+        <Typography variant="caption" color="text.secondary">
+          {name}
+        </Typography>
       </Box>
-    </Box>
+
+      <Typography sx={{ width: 80 }}>
+        {price ?? "Loading..."}
+      </Typography>
+
+      <Typography sx={{ width: 100 }}>
+        Held: {quantityHeld}
+      </Typography>
+
+      <TextField
+        type="number"
+        size="small"
+        value={qty}
+        onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
+        sx={{ width: 80 }}
+      />
+
+      <Typography sx={{ width: 120 }}>
+        {price ? `€${total.toFixed(2)}` : "-"}
+      </Typography>
+
+      <Button
+        variant="contained"
+        color="success"
+        onClick={() => onBuy(qty)}
+        disabled={!price}
+      >
+        Buy
+      </Button>
+
+      <Button
+        variant="contained"
+        color="warning"
+        onClick={() => onSell(qty)}
+        disabled={!price || quantityHeld === 0}
+      >
+        Sell
+      </Button>
+
+      <IconButton onClick={onDelete} color="error">
+        <DeleteIcon />
+      </IconButton>
+    </Paper>
   );
 };
 
-export default TickerSelector;
+export default TickerRow;
