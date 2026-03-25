@@ -13,16 +13,16 @@ namespace TradingApi.Kafka.Consumer
     public class PnlConsumer : BackgroundService
     {
         private readonly IHubContext<PnlHub> _hubContext;
-        private readonly KafkaSettings _settings;
+        private readonly KafkaSettings _kafkaSettings;
         private readonly ILogger<PnlConsumer> _logger;
 
         public PnlConsumer(
             IHubContext<PnlHub> hubContext,
-            IOptions<KafkaSettings> settings,
+            IOptions<PnlKafkaSettings> settings,
             ILogger<PnlConsumer> logger)
         {
             _hubContext = hubContext;
-            _settings = settings.Value;
+            _kafkaSettings = settings.Value;
             _logger = logger;
         }
 
@@ -35,17 +35,20 @@ namespace TradingApi.Kafka.Consumer
         {
             var config = new ConsumerConfig
             {
-                BootstrapServers = _settings.BootstrapServers,
-                GroupId = _settings.ConsumerGroupId,
+                BootstrapServers = _kafkaSettings.BootstrapServers,
+                GroupId = _kafkaSettings.ConsumerGroupId,
                 AutoOffsetReset = AutoOffsetReset.Latest,
                 EnableAutoCommit = true
             };
 
             using var consumer = new ConsumerBuilder<string, string>(config).Build();
 
-            consumer.Subscribe(_settings.Topic);
+            consumer.Subscribe(_kafkaSettings.Topic);
 
-            _logger.LogInformation("Kafka consumer started on topic {Topic}", _settings.Topic);
+            _logger.LogInformation("Kafka config: {Bootstrap} {Topic} {Group}",
+                _kafkaSettings.BootstrapServers,
+                _kafkaSettings.Topic,
+                _kafkaSettings.ConsumerGroupId);
 
             try
             {

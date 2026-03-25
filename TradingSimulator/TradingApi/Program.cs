@@ -1,11 +1,12 @@
-using System.Text;
 using Database.DbContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using TradingApi.Hubs;
 using TradingApi.Kafka.Config;
 using TradingApi.Kafka.Consumer;
+using TradingApi.Kafka.Consumers;
 using TradingApi.Options;
 using TradingApi.Services;
 using TradingApi.Services.Interfaces;
@@ -21,8 +22,11 @@ builder.Services.AddOpenApi();
 builder.Services.Configure<JwtConfig>(
     builder.Configuration.GetSection(JwtConfig.SectionName));
 
-builder.Services.Configure<KafkaSettings>(
-    builder.Configuration.GetSection("Kafka"));
+builder.Services.Configure<PnlKafkaSettings>(
+    builder.Configuration.GetSection("PnlKafka"));
+
+builder.Services.Configure<MarketKafkaSettings>(
+    builder.Configuration.GetSection("MarketKafka"));
 
 builder.Services.Configure<PolygonConfig>(options =>
 {
@@ -42,6 +46,7 @@ builder.Services.AddMemoryCache();
 builder.Services.AddHttpClient<IPolygonService, PolygonService>();
 builder.Services.AddSignalR();
 builder.Services.AddHostedService<PnlConsumer>();
+builder.Services.AddHostedService<MarketDataConsumer>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();

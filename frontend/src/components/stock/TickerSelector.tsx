@@ -3,21 +3,28 @@ import { Box, Typography, Paper, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import StockSearcher from "./StockSearcher";
 import type { Ticker } from "./StockSearcher";
+import { subscribe, unsubscribe } from "../../websocket/subscriptions";
+import { useMarketStore } from "../../stores/marketStore";
 
 const TickerSelector: React.FC = () => {
   const [selected, setSelected] = useState<Ticker[]>([]);
-
-  const handleSelect = (ticker: Ticker) => {
+  const prices = useMarketStore((state) => state.prices);
+  
+  const handleSelect = async (ticker: Ticker) => {
     setSelected((prev) => {
       if (prev.find((t) => t.ticker === ticker.ticker)) return prev;
       return [...prev, ticker];
     });
+
+    await subscribe(ticker.ticker);
   };
 
-  const handleDelete = (tickerToDelete: string) => {
+  const handleDelete = async (tickerToDelete: string) => {
     setSelected((prev) =>
       prev.filter((t) => t.ticker !== tickerToDelete)
     );
+
+    await unsubscribe(tickerToDelete);
   };
 
   return (
@@ -48,6 +55,9 @@ const TickerSelector: React.FC = () => {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {ticker.name} • {ticker.primary_exchange} • {ticker.type}
+                </Typography>
+                <Typography variant="h6">
+                  {prices[ticker.ticker] ?? "Loading..."}
                 </Typography>
               </Box>
 
