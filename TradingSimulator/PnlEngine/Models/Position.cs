@@ -4,7 +4,6 @@
     {
         public string Ticker { get; set; } = default!;
         public decimal Quantity { get; set; }
-        public decimal EntryPrice { get; set; }
-        public decimal LastPrice { get; set; }
+        public decimal AvgEntryPrice { get; set; }
     }
 }

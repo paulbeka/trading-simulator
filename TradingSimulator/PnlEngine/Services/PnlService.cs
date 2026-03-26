@@ -38,12 +38,13 @@ public class PnlService
             var position = await _positions.Get(user, ticker);
             if (position == null) continue;
 
-            var delta = (price - position.LastPrice) * position.Quantity;
+            var delta = (price - oldPrice.Value) * position.Quantity;
 
             await _pnlStore.ChangePnlWithDelta(user, delta);
 
             var totalPnl = await _pnlStore.Get(user);
-            var positionPnl = (price - position.EntryPrice) * position.Quantity;
+
+            var positionPnl = (price - position.AvgEntryPrice) * position.Quantity;
 
             await _producer.PublishAsync(new PnLUpdate
             {
@@ -55,9 +56,6 @@ public class PnlService
                 TotalPnL = totalPnl,
                 TotalDelta = delta,
             });
-
-            position.LastPrice = price;
-            await _positions.Set(user, ticker, position);
         }
     }
 }

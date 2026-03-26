@@ -12,10 +12,19 @@ namespace TradingApi.Services
     {
         private readonly TradingDbContext _dbContext;
         private readonly IPriceStore _priceStore;
-        public TradingService(TradingDbContext context, IPriceStore priceStore)
+        private readonly IUserPositionStore _positionStore;
+        private readonly ITickerUserIndex _tickerIndex;
+
+        public TradingService(
+            TradingDbContext context, 
+            IPriceStore priceStore,
+            IUserPositionStore positionStore,
+            ITickerUserIndex tickerIndex)
         {
             _dbContext = context;
             _priceStore = priceStore;
+            _positionStore = positionStore;
+            _tickerIndex = tickerIndex;
         }
 
         public async Task<TradeResponse> ExecuteTradeAsync(Guid userId, TradeRequest request)
@@ -109,6 +118,8 @@ namespace TradingApi.Services
             await _dbContext.SaveChangesAsync();
             await transaction.CommitAsync();
 
+            await CommitToRedis(userId, request, side, position);
+
             return new TradeResponse
             {
                 Ticker = request.Ticker,
@@ -132,6 +143,51 @@ namespace TradingApi.Services
                 AvgEntryPrice = p.AvgEntryPrice,
                 UpdatedAt = p.UpdatedAt
             }).ToList();
+        }
+
+
+        // TODO: turn this into a kafka event emission where the PnL engine handles update
+        private async Task CommitToRedis(
+            Guid userId,
+            TradeRequest request,
+            TradeSide side,
+            Position? position)
+        {
+            if (side == TradeSide.Buy)
+            {
+                await _positionStore.Set(userId.ToString(), request.Ticker, new Position
+                {
+                    Symbol = request.Ticker,
+                    Quantity = position.Quantity,
+                    AvgEntryPrice = position.AvgEntryPrice
+                });
+
+                await _tickerIndex.AddUserToTicker(request.Ticker, userId.ToString());
+            }
+            else if (side == TradeSide.Sell)
+            {
+                if (position == null || position.Quantity == 0)
+                {
+                    await _tickerIndex.RemoveUserFromTicker(
+                        request.Ticker,
+                        userId.ToString()
+                    );
+
+                    await _positionStore.Remove(
+                        userId.ToString(),
+                        request.Ticker
+                    );
+                }
+                else
+                {
+                    await _positionStore.Set(userId.ToString(), request.Ticker, new Position
+                    {
+                        Symbol = request.Ticker,
+                        Quantity = position.Quantity,
+                        AvgEntryPrice = position.AvgEntryPrice
+                    });
+                }
+            }
         }
     }
 }

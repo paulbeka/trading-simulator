@@ -63,6 +63,9 @@ builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<IMarketDataService, MarketDataService>();
 builder.Services.AddScoped<ITradingService, TradingService>();
+builder.Services.AddScoped<IUserPositionStore, RedisUserPositionStore>();
+builder.Services.AddScoped<ITickerUserIndex, RedisTickerUserIndex>();
+
 
 // JWT config
 var jwtConfig = builder.Configuration
