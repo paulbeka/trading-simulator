@@ -118,5 +118,20 @@ namespace TradingApi.Services
                 RemainingCash = account.CashBalance
             };
         }
+
+        public async Task<List<PositionResponse>> GetUserPositionsAsync(Guid userId)
+        {
+            var positions = await _dbContext.Positions
+                .Where(p => p.UserId == userId)
+                .ToListAsync();
+
+            return positions.Select(p => new PositionResponse
+            {
+                Ticker = p.Symbol,
+                Quantity = p.Quantity,
+                AvgEntryPrice = p.AvgEntryPrice,
+                UpdatedAt = p.UpdatedAt
+            }).ToList();
+        }
     }
 }

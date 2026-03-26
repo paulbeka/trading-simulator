@@ -25,8 +25,9 @@ namespace MarketDataService.Providers
                 try
                 {
                     var url = $"{BASE_URL}/v2/aggs/ticker/{ticker}/range/1/minute/{today}/{today}?apiKey={API_KEY}";
-
+                    
                     var response = await _httpClient.GetStringAsync(url);
+
                     using var json = JsonDocument.Parse(response);
 
                     if (json.RootElement.TryGetProperty("results", out var resultsArray) &&
@@ -42,8 +43,9 @@ namespace MarketDataService.Providers
                         }
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Console.WriteLine($"Error for {ticker}: {ex.Message}");
                 }
             }
 

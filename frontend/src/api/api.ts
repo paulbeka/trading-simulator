@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useAuthStore } from "../auth/authStore";
 import { BASE_URL } from "../config/Config";
+import type { TradeRequest, Position } from "./api.types";
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -15,13 +16,6 @@ api.interceptors.request.use((config) => {
 
   return config;
 });
-
-type TradeRequest = {
-  ticker: string;
-  quantity: number;
-  price: number;
-  side: "buy" | "sell";
-};
 
 const executeTrade = async (data: TradeRequest) => {
   const response = await api.post(`/api/trades/${data.side.toLowerCase()}`, {
@@ -50,6 +44,11 @@ export const sellStock = async (ticker: string, quantity: number, price: number)
     price,
     side: "sell",
   });
+};
+
+export const getPositions = async (): Promise<Position[]> => {
+  const response = await api.get("/api/trades/positions");
+  return response.data;
 };
 
 export default api;

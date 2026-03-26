@@ -74,6 +74,23 @@ namespace TradingApi.Controllers
             }
         }
 
+        [HttpGet("positions")]
+        public async Task<IActionResult> GetPositions()
+        {
+            try
+            {
+                var userId = GetUserId();
+
+                var positions = await _tradingService.GetUserPositionsAsync(userId);
+
+                return Ok(positions);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         private Guid GetUserId()
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
