@@ -5,12 +5,15 @@ import StockSearcher from "./StockSearcher";
 import type { Ticker } from "./StockSearcher";
 import { subscribe, unsubscribe } from "../../websocket/subscriptions";
 import { useMarketStore } from "../../stores/marketStore";
+import { usePortfolioStore } from "../../stores/portfolioStore"; // ✅ NEW
 import { buyStock, sellStock } from "../../api/api";
 
 const TickerSelector: React.FC = () => {
   const [selected, setSelected] = useState<Ticker[]>([]);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const prices = useMarketStore((state) => state.prices);
+
+  const updatePosition = usePortfolioStore((state) => state.updatePosition); // ✅ NEW
 
   const handleSelect = async (ticker: Ticker) => {
     setSelected((prev) => {
@@ -59,7 +62,11 @@ const TickerSelector: React.FC = () => {
     if (!price || isNaN(price)) return;
     try {
       const res = await buyStock(ticker, quantity, price);
-      console.log(res);
+
+      updatePosition(res.ticker, {
+        price: Number(res.price),
+      });
+
     } catch (e) {
       console.error(e);
     }
@@ -69,7 +76,11 @@ const TickerSelector: React.FC = () => {
     if (!price || isNaN(price)) return;
     try {
       const res = await sellStock(ticker, quantity, price);
-      console.log(res);
+
+      updatePosition(res.ticker, {
+        price: Number(res.price),
+      });
+
     } catch (e) {
       console.error(e);
     }

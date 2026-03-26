@@ -3,14 +3,14 @@ import { usePortfolioStore } from "../stores/portfolioStore";
 import type { PnLUpdateMessage, PriceUpdateMessage } from "./messages.types";
 
 export function handlePnL(msg: PnLUpdateMessage) {
-  const { symbol, pnl, price } = msg;
+  const { ticker, price, positionPnL } = msg;
 
-  usePortfolioStore.getState().updatePosition(symbol, {
-    pnl,
+  usePortfolioStore.getState().updatePosition(ticker, {
+    pnl: positionPnL,
     price,
   });
 
-  useMarketStore.getState().setPrice(symbol, price);
+  useMarketStore.getState().setPrice(ticker, price);
 }
 
 export function handlePrice(msg: PriceUpdateMessage) {

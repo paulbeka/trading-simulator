@@ -117,3 +117,5 @@ This adds a more realistic valuation layer to the system.
 
 - For when searching stocks and getting their price: make a "hub" for the price of each individual ticker and subscribe to it
 - or we can have it in one socket?
+
+- Also: make sure the initial socket connection includes a first tick with prices and pnl

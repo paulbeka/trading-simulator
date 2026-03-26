@@ -9,37 +9,56 @@ import {
 import { getPositions, buyStock, sellStock } from "../../api/api";
 import type { Position } from "../../api/api.types";
 import { useMarketStore } from "../../stores/marketStore";
+import { usePortfolioStore } from "../../stores/portfolioStore";
 import { subscribe, unsubscribe } from "../../websocket/subscriptions";
+import { getConnection } from "../../websocket/websocketClient";
 
 const AssetList: React.FC = () => {
   const [positions, setPositions] = useState<Position[]>([]);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
-  const prices = useMarketStore((state) => state.prices);
 
-  // Fetch positions
+  const prices = useMarketStore((state) => state.prices);
+  const pnlPositions = usePortfolioStore((state) => state.positions);
+
   useEffect(() => {
-    const fetchPositions = async () => {
+    let activeTickers: string[] = [];
+    let mounted = true;
+
+    const setup = async () => {
       try {
+        const conn = await getConnection();
+
         const data = await getPositions();
+        if (!mounted) return;
+
         setPositions(data);
 
-        data.forEach(async (p) => {
+        activeTickers = data.map((p) => p.ticker);
+
+        for (const p of data) {
           setQuantities((prev) => ({
             ...prev,
             [p.ticker]: 1,
           }));
 
-          await subscribe(p.ticker);
-        });
+          try {
+            await subscribe(p.ticker);
+          } catch (e) {
+            console.error("Subscribe failed", p.ticker, e);
+          }
+        }
       } catch (e) {
         console.error(e);
       }
     };
 
-    fetchPositions();
+    setup();
 
     return () => {
-      positions.forEach((p) => unsubscribe(p.ticker));
+      mounted = false;
+      for (const ticker of activeTickers) {
+        unsubscribe(ticker);
+      }
     };
   }, []);
 
@@ -58,7 +77,8 @@ const AssetList: React.FC = () => {
     }));
   };
 
-  const handleBuy = async (ticker: string, quantity: number, price: number) => {
+  const handleBuy = async (ticker: string, quantity: number, price?: number) => {
+    if (!price) return;
     try {
       await buyStock(ticker, quantity, price);
     } catch (e) {
@@ -66,7 +86,8 @@ const AssetList: React.FC = () => {
     }
   };
 
-  const handleSell = async (ticker: string, quantity: number, price: number) => {
+  const handleSell = async (ticker: string, quantity: number, price?: number) => {
+    if (!price) return;
     try {
       await sellStock(ticker, quantity, price);
     } catch (e) {
@@ -87,15 +108,8 @@ const AssetList: React.FC = () => {
       ) : (
         positions.map((p) => {
           const price = prices[p.ticker];
+          const pnl = pnlPositions[p.ticker]?.pnl;
           const quantity = quantities[p.ticker] || 1;
-
-          const totalValue =
-            price && !isNaN(price) ? price * p.quantity : null;
-
-          const pnl =
-            price && !isNaN(price)
-              ? (price - p.avgEntryPrice) * p.quantity
-              : null;
 
           return (
             <Paper
@@ -128,15 +142,16 @@ const AssetList: React.FC = () => {
 
               <Box sx={{ minWidth: 160 }}>
                 <Typography>
-                  Value: {totalValue ? `$${totalValue.toFixed(2)}` : "—"}
+                  Value: {price ? `$${(price * p.quantity).toFixed(2)}` : "—"}
                 </Typography>
                 <Typography
                   color={
-                    pnl && pnl >= 0 ? "success.main" : "error.main"
+                    pnl !== undefined && pnl >= 0
+                      ? "success.main"
+                      : "error.main"
                   }
                 >
-                  PnL:{" "}
-                  {pnl ? `$${pnl.toFixed(2)}` : "—"}
+                  PnL: {pnl !== undefined ? `$${pnl.toFixed(2)}` : "—"}
                 </Typography>
               </Box>
 
@@ -174,7 +189,7 @@ const AssetList: React.FC = () => {
                   variant="contained"
                   color="success"
                   onClick={() =>
-                    handleBuy(p.ticker, quantity, Number(price))
+                    handleBuy(p.ticker, quantity, price)
                   }
                 >
                   Buy
@@ -184,7 +199,7 @@ const AssetList: React.FC = () => {
                   variant="contained"
                   color="error"
                   onClick={() =>
-                    handleSell(p.ticker, quantity, Number(price))
+                    handleSell(p.ticker, quantity, price)
                   }
                 >
                   Sell
