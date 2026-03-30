@@ -10,15 +10,18 @@ namespace PnlEngine.Services
         private readonly TradingDbContext _db;
         private readonly IUserPositionStore _userPositionStore;
         private readonly ITickerUserIndex _tickerUserIndex;
+        private readonly ITickerStore _tickerStore;
 
         public InitialisationService(
             TradingDbContext db,
             IUserPositionStore userPositionStore,
-            ITickerUserIndex tickerUserIndex)
+            ITickerUserIndex tickerUserIndex,
+            ITickerStore tickerStore)
         {
             _db = db;
             _userPositionStore = userPositionStore;
             _tickerUserIndex = tickerUserIndex;
+            _tickerStore = tickerStore;
         }
 
         public async Task LoadPositionsIntoRedis()
@@ -37,8 +40,8 @@ namespace PnlEngine.Services
                 };
 
                 await _userPositionStore.Set(userId, ticker, position);
-
                 await _tickerUserIndex.AddUserToTicker(ticker, userId);
+                await _tickerStore.AddTicker(ticker);
             }
         }
     }

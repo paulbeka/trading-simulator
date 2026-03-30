@@ -14,7 +14,7 @@ namespace MarketDataService.Providers
             _httpClient = new HttpClient();
         }
 
-        public async Task<List<(string ticker, decimal price)>> GetPricesAsync(string[] tickers)
+        public async Task<List<(string ticker, decimal price)>> GetPricesAsync(IEnumerable<string> tickers)
         {
             var prices = new List<(string, decimal)>();
 

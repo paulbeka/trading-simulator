@@ -51,6 +51,9 @@ var redis = ConnectionMultiplexer.Connect(redisConnection);
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(redis);
 builder.Services.AddSingleton<IPriceStore, RedisPriceStore>();
+builder.Services.AddSingleton<ITickerStore, RedisTickerStore>();
+builder.Services.AddScoped<IUserPositionStore, RedisUserPositionStore>();
+builder.Services.AddScoped<ITickerUserIndex, RedisTickerUserIndex>();
 
 // Other services
 builder.Services.AddHttpClient<IPolygonService, PolygonService>();
@@ -63,9 +66,6 @@ builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<IMarketDataService, MarketDataService>();
 builder.Services.AddScoped<ITradingService, TradingService>();
-builder.Services.AddScoped<IUserPositionStore, RedisUserPositionStore>();
-builder.Services.AddScoped<ITickerUserIndex, RedisTickerUserIndex>();
-
 
 // JWT config
 var jwtConfig = builder.Configuration

@@ -7,13 +7,15 @@ using StackExchange.Redis;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-var redis = ConnectionMultiplexer.Connect("localhost:6379");
+var redisConnection = builder.Configuration["Redis:ConnectionString"] ?? "localhost:6379";
+var redis = ConnectionMultiplexer.Connect(redisConnection); 
 builder.Services.AddSingleton<IConnectionMultiplexer>(redis);
 
 builder.Services.AddSingleton<IPriceStore, RedisPriceStore>();
 builder.Services.AddSingleton<IUserPositionStore, RedisUserPositionStore>();
 builder.Services.AddSingleton<ITickerUserIndex, RedisTickerUserIndex>();
 builder.Services.AddSingleton<IPnlStore, RedisPnlStore>();
+builder.Services.AddSingleton<ITickerStore, RedisTickerStore>();
 
 builder.Services.AddSingleton<PnlService>();
 builder.Services.AddSingleton<PnlUpdateKafkaProducer>();
