@@ -2,37 +2,37 @@
 
 The goal of this project is to build a live PnL calculator for users holding positions in equities and derivatives.
 
-The system is designed to update PnL in real time, using Kafka to decouple services while maintaining high performance. Price updates should propagate through the system efficiently — updating in-memory PnL, recalculating user position values, pushing updates via WebSockets, and persisting realised PnL where needed.
+The system is designed to update PnL in real time, using Kafka to decouple services while maintaining high performance. Price updates should propagate through the system efficiently. These updates should update in-memory (redis) PnL, recalculate user position values, push updates via WebSockets, and persist realised PnL where needed.
 
 This project is also a way for me to demonstrate my skillset in:
 - Live PnL systems
-- Valuation logic (especially derivatives)
+- Valuation logic
 - Event-driven architecture
 
 ---
 
 # Backend
 
-The backend is built entirely in **C#**, with an event-driven architecture powered by **Kafka**.
+The backend is built entirely in C#, with an event-driven architecture powered by Kafka, and an in-memory cache using Redis. 
 
-The idea is to keep services loosely coupled while ensuring fast and reliable data flow across the system.
+The idea is to keep services loosely coupled while ensuring fast and reliable data flow across the system. Whilst I did not fully implement hexagonal architecture using ports and adapters, that will be part of the refactoring process. For the sake of getting a working prototype working, that structure has not been fully implemented.
 
 ---
 
 # Frontend
 
 The frontend uses:
-- **Vite**
-- **React**
-- **TypeScript**
+- Vite
+- React
+- TypeScript
 
-It provides a dashboard where users can manage positions and view their live PnL.
+It provides a dashboard where users can manage positions and view their live PnL, and buy/sell positions.
 
 ---
 
 # The Plan
 
-Since we can’t fully simulate real market data, we’ll fetch live prices from Yahoo Finance for equities.
+Since we can’t fully simulate real market data, we’ll fetch live prices from Polygon for equities.
 
 ## Core Workflow
 
@@ -59,14 +59,20 @@ This adds a more realistic valuation layer to the system.
 
 - Price updates are published to Kafka.
 - A PnL consumer processes incoming price updates.
+- The pricing engine then recalculates PnL per user using a reverse index.
+- PnL updates are sent out using Kafka and ingested by the API hosting the websocket hub
+- The updates are pushed to clients 
 
 ## Initial Setup
 
-- On startup:
-  - Build in-memory maps:
-    - `user -> positions`
-    - `ticker -> users`
-  - Populate initial prices.
+On startup:
+- Build in-memory maps:
+  - `user -> positions`
+  - `ticker -> users`
+- Populate initial prices.
+- Make sure that Redis is hydrated.
+
+
 
 ## Real-Time Updates
 
@@ -99,23 +105,10 @@ This adds a more realistic valuation layer to the system.
   - Support multiple option pricing models
   - Improve realism of derivatives pricing
 
-- Ensure correct PnL tracking:
-  - Unrealised PnL
-  - Realised PnL
-
 - Improve infrastructure:
-  - Proper Kafka configuration (singleton injection, constants, etc.)
   - Scalability improvements (e.g. partitioning, sharding)
 
 
-# Notes
+# Developer's Notes
 
-- For a user to chose which stock to buy, we need to have fetched the ticker data for that stock. Yet that's not possible to do in our engine unless we keep track of it
-- Keep a hotset of currently needed tickers
-- TODO: add a live streaming from polygon websocket prices 
 - For options: model the IV dist based on last EOD and then recalc prices on surface 
-
-- For when searching stocks and getting their price: make a "hub" for the price of each individual ticker and subscribe to it
-- or we can have it in one socket?
-
-- Also: make sure the initial socket connection includes a first tick with prices and pnl

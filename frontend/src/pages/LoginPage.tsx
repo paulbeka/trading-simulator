@@ -13,6 +13,11 @@ import { useAuthStore } from "../auth/authStore";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
+type JwtPayload = {
+  sub: string;
+  email: string;
+};
+
 const LoginPage = () => {
   const setAuth = useAuthStore((s) => s.setAuth);
 
@@ -23,16 +28,7 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  type JwtPayload = {
-    sub: string;
-    email: string;
-  };
-
-  const redirectToSignup = () => {
-    navigate("/register");
-  }
-
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.ChangeEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
@@ -41,12 +37,15 @@ const LoginPage = () => {
       const data = await login(email, password);
       const decoded = jwtDecode<JwtPayload>(data.token);
 
-      const user = {
-        id: decoded.sub,
-      };
-      setAuth(user, data.token);
+      setAuth(
+        {
+          id: decoded.sub,
+          email: decoded.email,
+        },
+        data.token
+      );
 
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     } catch {
       setError("Invalid email or password");
     } finally {
@@ -55,19 +54,22 @@ const LoginPage = () => {
   };
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="100vh"
-    >
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
       <Paper elevation={3} sx={{ p: 4, width: 400 }}>
         <form onSubmit={handleLogin}>
           <Typography variant="h5" mb={2}>
             Login
           </Typography>
 
-          <Typography>No account? <span style={{ color: "blue", cursor: "pointer" }} onClick={redirectToSignup}>Sign up here.</span ></Typography>
+          <Typography>
+            No account?{" "}
+            <span
+              style={{ color: "blue", cursor: "pointer" }}
+              onClick={() => navigate("/register")}
+            >
+              Sign up here.
+            </span>
+          </Typography>
 
           <TextField
             label="Email"
@@ -75,7 +77,7 @@ const LoginPage = () => {
             fullWidth
             margin="normal"
             value={email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <TextField
@@ -84,7 +86,7 @@ const LoginPage = () => {
             fullWidth
             margin="normal"
             value={password}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           {error && (
@@ -93,13 +95,7 @@ const LoginPage = () => {
             </Alert>
           )}
 
-          <Button
-            type="submit"
-            variant="contained"
-            fullWidth
-            sx={{ mt: 3 }}
-            disabled={loading}
-          >
+          <Button type="submit" variant="contained" fullWidth sx={{ mt: 3 }} disabled={loading}>
             {loading ? <CircularProgress size={24} /> : "Login"}
           </Button>
         </form>
