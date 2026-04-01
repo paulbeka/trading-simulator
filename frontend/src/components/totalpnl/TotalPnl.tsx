@@ -3,10 +3,17 @@ import { usePortfolioStore } from "../../stores/portfolioStore";
 import { useEffect } from "react";
 import { getAccountBalance } from "../../api/api";
 
+const formatNumber = (num) =>
+  num.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+const getColor = (num) => (num >= 0 ? "#4caf50" : "#f44336");
+
 const TotalPnl = () => {
   const positions = usePortfolioStore((state) => state.positions);
   const cashBalance = usePortfolioStore((state) => state.cashBalance);
-  
   const setCashBalance = usePortfolioStore((state) => state.setCashBalance);
 
   const totalPnl = Object.values(positions).reduce(
@@ -14,10 +21,13 @@ const TotalPnl = () => {
     0
   );
 
+  const realisedPnl = cashBalance - 100000;
+  const total = realisedPnl + totalPnl;
+
   useEffect(() => {
     const fetchBalance = async () => {
       const balance = await getAccountBalance();
-      setCashBalance(balance); 
+      setCashBalance(balance);
     };
 
     fetchBalance();
@@ -25,8 +35,20 @@ const TotalPnl = () => {
 
   return (
     <Box>
-      <Typography>
-        Cash: ${cashBalance.toFixed(2)} | Total PnL: ${totalPnl.toFixed(2)}
+      <Typography sx={{ fontWeight: 500 }}>
+        Cash: ${formatNumber(cashBalance)} |{" "}
+        Unrealised PnL:{" "}
+        <span style={{ color: getColor(totalPnl) }}>
+          ${formatNumber(totalPnl)}
+        </span>{" "}
+        | Realised PnL:{" "}
+        <span style={{ color: getColor(realisedPnl) }}>
+          ${formatNumber(realisedPnl)}
+        </span>{" "}
+        | Total PnL:{" "}
+        <span style={{ color: getColor(total) }}>
+          ${formatNumber(total)}
+        </span>
       </Typography>
     </Box>
   );

@@ -1,11 +1,11 @@
 export type PnLUpdateMessage = {
-  user: string;
-  ticker: string;
-  price: number;
-  positionPnL: number;
-  positionDelta: number;
-  totalPnL: number;
-  totalDelta: number;
+  User: string;
+  Ticker: string;
+  Price: number;
+  PositionPnL: number;
+  PositionDelta: number;
+  TotalPnL: number;
+  TotalDelta: number;
 };
 
 export type PriceUpdateMessage = {
