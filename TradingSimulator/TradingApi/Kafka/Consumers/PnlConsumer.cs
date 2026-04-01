@@ -60,6 +60,7 @@ namespace TradingApi.Kafka.Consumer
                         continue;
 
                     var update = JsonSerializer.Deserialize<PnlUpdate>(result.Message.Value);
+                    Console.WriteLine(result.Message.Value);
 
                     if (update == null)
                         continue;

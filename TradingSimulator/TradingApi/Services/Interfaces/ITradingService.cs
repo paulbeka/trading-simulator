@@ -7,5 +7,7 @@ namespace TradingApi.Services.Interfaces
         Task<TradeResponse> ExecuteTradeAsync(Guid userId, TradeRequest request);
 
         Task<List<PositionResponse>> GetUserPositionsAsync(Guid userId);
+
+        Task<decimal> GetUserAccountBalance(Guid userId);
     }
 }

@@ -1,9 +1,11 @@
 import { useMarketStore } from "../stores/marketStore";
 import { usePortfolioStore } from "../stores/portfolioStore";
-import type { PnLUpdateMessage, PriceUpdateMessage } from "./messages.types";
+import type { PriceUpdateMessage } from "./messages.types";
 
-export function handlePnL(msg: PnLUpdateMessage) {
-  const { ticker, price, positionPnL } = msg;
+export function handlePnL(msg: any) {
+  const ticker = msg.ticker ?? msg.Ticker;
+  const price = msg.price ?? msg.Price;
+  const positionPnL = msg.positionPnL ?? msg.PositionPnL;
 
   usePortfolioStore.getState().updatePosition(ticker, {
     pnl: positionPnL,

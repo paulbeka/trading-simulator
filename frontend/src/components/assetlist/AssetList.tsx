@@ -7,18 +7,19 @@ import {
   TextField,
 } from "@mui/material";
 import { getPositions, buyStock, sellStock } from "../../api/api";
-import type { Position } from "../../api/api.types";
 import { useMarketStore } from "../../stores/marketStore";
 import { usePortfolioStore } from "../../stores/portfolioStore";
 import { subscribe, unsubscribe } from "../../websocket/subscriptions";
 import { getConnection } from "../../websocket/websocketClient";
 
 const AssetList: React.FC = () => {
-  const [positions, setPositions] = useState<Position[]>([]);
+  // ❌ removed local positions state
+  const positions = usePortfolioStore((state) => state.positions);
+  const setPositions = usePortfolioStore((state) => state.setPositions);
+
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
   const prices = useMarketStore((state) => state.prices);
-  const pnlPositions = usePortfolioStore((state) => state.positions);
 
   useEffect(() => {
     let activeTickers: string[] = [];
@@ -26,11 +27,12 @@ const AssetList: React.FC = () => {
 
     const setup = async () => {
       try {
-        const conn = await getConnection();
+        await getConnection();
 
         const data = await getPositions();
         if (!mounted) return;
 
+        // ✅ store instead of local state
         setPositions(data);
 
         activeTickers = data.map((p) => p.ticker);
@@ -60,7 +62,7 @@ const AssetList: React.FC = () => {
         unsubscribe(ticker);
       }
     };
-  }, []);
+  }, [setPositions]);
 
   const updateQuantity = (ticker: string, delta: number) => {
     setQuantities((prev) => ({
@@ -81,6 +83,10 @@ const AssetList: React.FC = () => {
     if (!price) return;
     try {
       await buyStock(ticker, quantity, price);
+
+      // ✅ refresh store
+      const data = await getPositions();
+      setPositions(data);
     } catch (e) {
       console.error(e);
     }
@@ -90,10 +96,16 @@ const AssetList: React.FC = () => {
     if (!price) return;
     try {
       await sellStock(ticker, quantity, price);
+
+      // ✅ refresh store
+      const data = await getPositions();
+      setPositions(data);
     } catch (e) {
       console.error(e);
     }
   };
+
+  const positionArray = Object.values(positions);
 
   return (
     <Box>
@@ -101,14 +113,14 @@ const AssetList: React.FC = () => {
         Your Portfolio
       </Typography>
 
-      {positions.length === 0 ? (
+      {positionArray.length === 0 ? (
         <Typography color="text.secondary">
           No assets yet
         </Typography>
       ) : (
-        positions.map((p) => {
+        positionArray.map((p) => {
           const price = prices[p.ticker];
-          const pnl = pnlPositions[p.ticker]?.pnl;
+          const pnl = p.pnl;
           const quantity = quantities[p.ticker] || 1;
 
           return (

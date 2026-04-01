@@ -51,4 +51,9 @@ export const getPositions = async (): Promise<Position[]> => {
   return response.data;
 };
 
+export const getAccountBalance = async (): Promise<number> => {
+  const response = await api.get("/api/trades/balance");
+  return response.data.cashBalance;
+};
+
 export default api;

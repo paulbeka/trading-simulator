@@ -145,6 +145,15 @@ namespace TradingApi.Services
             }).ToList();
         }
 
+        public async Task<decimal> GetUserAccountBalance(Guid userId)
+        {
+            var account = await _dbContext.Accounts
+                .FirstOrDefaultAsync(a => a.UserId == userId);
+            if (account == null)
+                throw new Exception("Account not found");
+            return account.CashBalance;
+        }
+
 
         // TODO: turn this into a kafka event emission where the PnL engine handles update
         private async Task CommitToRedis(

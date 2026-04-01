@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.JsonWebTokens;
 using System.Security.Claims;
 using TradingApi.Contracts.Trading;
@@ -89,6 +90,19 @@ namespace TradingApi.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpGet("balance")]
+        public async Task<ActionResult<AccountBalanceResponse>> GetAccountBalance()
+        {
+            var userId = GetUserId();
+
+            var accountBalance = await _tradingService.GetUserAccountBalance(userId);
+
+            return Ok(new AccountBalanceResponse
+            {
+                CashBalance = accountBalance
+            });
         }
 
         private Guid GetUserId()
