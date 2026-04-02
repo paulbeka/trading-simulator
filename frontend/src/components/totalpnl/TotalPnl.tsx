@@ -3,13 +3,13 @@ import { usePortfolioStore } from "../../stores/portfolioStore";
 import { useEffect } from "react";
 import { getAccountBalance } from "../../api/api";
 
-const formatNumber = (num) =>
+const formatNumber = (num: number) =>
   num.toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
 
-const getColor = (num) => (num >= 0 ? "#4caf50" : "#f44336");
+const getColor = (num: number) => (num >= 0 ? "#4caf50" : "#f44336");
 
 const TotalPnl = () => {
   const positions = usePortfolioStore((state) => state.positions);

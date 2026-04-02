@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { getMe } from "../api/authApi";
 
 type User = {
   id: string;
@@ -50,23 +51,7 @@ export const useAuthStore = create<AuthState>()(
         }
 
         try {
-          const response = await fetch("/api/users/me", {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-
-          if (!response.ok) {
-            set({
-              user: null,
-              token: null,
-              authChecked: true,
-            });
-            return;
-          }
-
-          const user = await response.json();
+          const user = await getMe(token);
 
           set({
             user,
@@ -83,6 +68,9 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: "auth-storage",
+      partialize: (state) => ({
+        token: state.token,
+      }),
     }
   )
 );
