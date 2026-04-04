@@ -3,12 +3,44 @@
   "WorkspaceRootPath": "C:\\Workspace\\trading-simulator\\TradingSimulator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\pnlengine\\workers\\pnlworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{52217714-235F-EC7B-2A23-EE590B348E98}|PnlEngine\\PnlEngine.csproj|solutionrelative:pnlengine\\workers\\pnlworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\kafka\\consumers\\pnlconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\kafka\\consumers\\pnlconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\contracts\\pnl\\pnlupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\contracts\\pnl\\pnlupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\controllers\\tradescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\controllers\\tradescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\hubs\\pnlhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\hubs\\pnlhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\services\\tradingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\services\\tradingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\services\\currentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\services\\currentuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|c:\\workspace\\trading-simulator\\tradingsimulator\\tradingapi\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5242B13-0056-1391-8BE9-7823FFEFD3E0}|TradingApi\\TradingApi.csproj|solutionrelative:tradingapi\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,19 +50,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PnlWorker.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Workers\\PnlWorker.cs",
-              "RelativeDocumentMoniker": "PnlEngine\\Workers\\PnlWorker.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Workers\\PnlWorker.cs",
-              "RelativeToolTip": "PnlEngine\\Workers\\PnlWorker.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwA8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "TradingApi\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAIwCEAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T14:44:47.731Z",
+              "WhenOpened": "2026-04-02T09:33:22.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PnlUpdate.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Contracts\\Pnl\\PnlUpdate.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Contracts\\Pnl\\PnlUpdate.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Contracts\\Pnl\\PnlUpdate.cs",
+              "RelativeToolTip": "TradingApi\\Contracts\\Pnl\\PnlUpdate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T20:46:08.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PnlConsumer.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Kafka\\Consumers\\PnlConsumer.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Kafka\\Consumers\\PnlConsumer.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Kafka\\Consumers\\PnlConsumer.cs",
+              "RelativeToolTip": "TradingApi\\Kafka\\Consumers\\PnlConsumer.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAcwEMAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T20:44:17.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PnlHub.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Hubs\\PnlHub.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Hubs\\PnlHub.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Hubs\\PnlHub.cs",
+              "RelativeToolTip": "TradingApi\\Hubs\\PnlHub.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAswCQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T20:42:24.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TradingService.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\TradingService.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Services\\TradingService.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\TradingService.cs",
+              "RelativeToolTip": "TradingApi\\Services\\TradingService.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAYwJMAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T18:46:14.708Z",
               "EditorCaption": ""
             },
             {
@@ -55,15 +139,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Program.cs",
-              "RelativeDocumentMoniker": "PnlEngine\\Program.cs",
-              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\PnlEngine\\Program.cs",
-              "RelativeToolTip": "PnlEngine\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "TradesController.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Controllers\\TradesController.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Controllers\\TradesController.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Controllers\\TradesController.cs",
+              "RelativeToolTip": "TradingApi\\Controllers\\TradesController.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAowFYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T14:44:29.23Z",
+              "WhenOpened": "2026-04-01T18:49:33.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "TradingApi\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACAAAAAAzszMzMwEwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T13:27:11.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CurrentUserService.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\CurrentUserService.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Services\\CurrentUserService.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\CurrentUserService.cs",
+              "RelativeToolTip": "TradingApi\\Services\\CurrentUserService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAADwvyAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T11:55:19.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\AuthService.cs",
+              "RelativeToolTip": "TradingApi\\Services\\AuthService.cs",
+              "ViewState": "AgIAABQAAAAgmJmZmZkwwGAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T11:55:12.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "JwtTokenService.cs",
+              "DocumentMoniker": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\JwtTokenService.cs",
+              "RelativeDocumentMoniker": "TradingApi\\Services\\JwtTokenService.cs",
+              "ToolTip": "C:\\Workspace\\trading-simulator\\TradingSimulator\\TradingApi\\Services\\JwtTokenService.cs",
+              "RelativeToolTip": "TradingApi\\Services\\JwtTokenService.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAIwC0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T11:49:15.724Z",
               "EditorCaption": ""
             }
           ]

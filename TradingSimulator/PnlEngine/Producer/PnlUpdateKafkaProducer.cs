@@ -1,10 +1,11 @@
 ﻿using Confluent.Kafka;
-using System.Text.Json;
 using PnlEngine.Models;
+using PnlEngine.Producer.Interfaces;
+using System.Text.Json;
 
 namespace PnlEngine.Producer
 {
-    public class PnlUpdateKafkaProducer : IDisposable
+    public class PnlUpdateKafkaProducer : IDisposable, IPnlUpdateProducer
     {
         private readonly IProducer<string, string> _producer;
         private readonly string _topic;

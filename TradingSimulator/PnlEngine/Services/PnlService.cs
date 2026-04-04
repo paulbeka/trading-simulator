@@ -1,6 +1,7 @@
 ﻿using PnlEngine.Interfaces;
 using PnlEngine.Models;
 using PnlEngine.Producer;
+using PnlEngine.Producer.Interfaces;
 
 public class PnlService
 {
@@ -8,14 +9,14 @@ public class PnlService
     private readonly ITickerUserIndex _tickerIndex;
     private readonly IUserPositionStore _positions;
     private readonly IPnlStore _pnlStore;
-    private readonly PnlUpdateKafkaProducer _producer;
+    private readonly IPnlUpdateProducer _producer;
 
     public PnlService(
         IPriceStore priceStore,
         ITickerUserIndex tickerIndex,
         IUserPositionStore positions,
         IPnlStore pnlStore,
-        PnlUpdateKafkaProducer producer)
+        IPnlUpdateProducer producer)
     {
         _priceStore = priceStore;
         _tickerIndex = tickerIndex;
